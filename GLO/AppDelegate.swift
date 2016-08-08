@@ -23,11 +23,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-            configuration.server = "https://pure-caverns-99011.herokuapp.com/parse/" // '/' important after 'parse'
+            configuration.server = "https://glo-app.herokuapp.com/parse/" // '/' important after 'parse'
             configuration.applicationId = "3DSGLOBALROUNDUP"
         }))
         
         
+        let params = ["phoneNumber": "1234567", "codeEntry": "1234"] as [NSObject:AnyObject]
+        
+        
+        print("About to call cloud code login")
+        /*
+        PFCloud.callFunctionInBackground("logIn", withParameters: params) { response, error in
+            if let description = error?.description {
+                //self.editing = true
+                return //self.showAlert("Login Error", message: description)
+            }
+            
+            if let res = response as? String {
+                print("Success! Here's the cloud login response: ", res)
+                
+                /*
+                PFUser.becomeInBackground(token) { user, error in
+                    if let _ = error {
+                        self.showAlert("Login Error", message: NSLocalizedString("warningGeneral", comment: "Something happened while trying to log in.\nPlease try again."))
+                        self.editing = true
+                        return self.step1()
+                    }
+                    return self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                */
+                
+            } else {
+                print("Login error with Parse Cloud");
+                //self.editing = true
+                //self.showAlert("Login Error", message: NSLocalizedString("warningGeneral", comment: "Something went wrong.  Please try again."))
+                return //self.step1()
+            }
+        }
+        */
         
         
         // TODO: Need to initialize view controller above and then set one as the root view controller as below
@@ -43,7 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Houston we have a user")
         } else {
             print("present the login!")
-            let storyboard = UIStoryboard.init(name: "LoginStoryboard", bundle: nil)
+            //let storyboard = UIStoryboard.init(name: "LoginStoryboard", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "PhoneLogin", bundle: nil)
             self.window?.rootViewController?.presentViewController(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
         }
         

@@ -17,17 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GLO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-o6-FoI">
-                                <rect key="frame" x="222" y="253" width="158" height="94"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="82"/>
-                                <color key="textColor" red="0.74043996710000004" green="0.49151932570000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glo logo" translatesAutoresizingMaskIntoConstraints="NO" id="W2z-5h-Dbe">
+                                <rect key="frame" x="140" y="140" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Ybj-nM-Ms2"/>
+                                    <constraint firstAttribute="width" constant="320" id="eUt-xM-pqd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright Good Looking Out, LLC, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-lu-7Lf">
+                                <rect key="frame" x="148" y="565" width="305" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="305" id="0tf-4P-mlY"/>
+                                    <constraint firstAttribute="height" constant="27" id="of0-Za-07d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ztI-o6-FoI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="1" id="YJd-A0-vXC"/>
-                            <constraint firstItem="ztI-o6-FoI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aVI-9T-1Hn"/>
+                            <constraint firstItem="OXM-lu-7Lf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="APi-Gh-MbV"/>
+                            <constraint firstItem="W2z-5h-Dbe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QzO-SN-ZMn"/>
+                            <constraint firstItem="W2z-5h-Dbe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ViN-Pm-oiC"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="OXM-lu-7Lf" secondAttribute="bottom" constant="8" id="rOt-KJ-7P0"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,4 +49,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="glo logo" width="500" height="500"/>
+    </resources>
 </document>

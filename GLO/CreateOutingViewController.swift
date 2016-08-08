@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class CreateOutingViewController:UIViewController,UIScrollViewDelegate {
+class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFieldDelegate {
     
     struct WuTang {
         
@@ -77,6 +77,10 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate {
         addMemberButton.layer.cornerRadius = 15.0
         createOutingButton.layer.cornerRadius = 8.0
         mapImageView.layer.cornerRadius = 10.0
+        
+        outingNameTextField.delegate = self
+        destinationTextField.delegate = self
+        
         
     }
     
@@ -189,8 +193,6 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate {
         }
 
     
-    
-    
     func setupList() {
         print("Setup List Items")
         for i in 0 ..< members.count {
@@ -234,6 +236,22 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate {
         }
         
     }
+    
+    func didTapImageView(sender: AnyObject) {
+        print("tapped the image")
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
 
     
     

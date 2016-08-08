@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,12 +52,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>44A6D33591E6949A556D5B2C14D91DEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CABB3B4608FD2F88AF98DCC30226E7EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -58,6 +88,16 @@
 			<true/>
 		</dict>
 		<key>D81997F1A59D418907694C1467D0BDB9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E69226F0B2A79727CA0DAC744104A068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F298001039E8C87E34A97502A874536F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
