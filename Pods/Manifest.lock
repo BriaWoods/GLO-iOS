@@ -1,21 +1,31 @@
 PODS:
   - Alamofire (3.4.1)
   - Bolts/Tasks (1.7.0)
+  - GoogleMaps (1.13.2)
+  - GooglePlaces (1.0.5):
+    - Alamofire (~> 3.0)
+    - ObjectMapper (~> 1.0)
+  - ObjectMapper (1.3.0)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
   - Socket.IO-Client-Swift (6.1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - GoogleMaps
+  - GooglePlaces
   - Parse
   - Socket.IO-Client-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  GooglePlaces: 9c56b4f59929d995a5023a6d6e0969b5ed233a9c
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   Socket.IO-Client-Swift: 00eb528b3eaa0c0385e54b8c6c00e36abc992257
 
-PODFILE CHECKSUM: 0cbf6dafc6a8a6bb2d1d1887a1aa9894579eac13
+PODFILE CHECKSUM: 0e293baa3b6d04e19767838321d3956e2a53e2d7
 
 COCOAPODS: 1.0.0

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import QuartzCore
+import GoogleMaps
+import Alamofire
 
 class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFieldDelegate {
     
@@ -50,9 +52,11 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     @IBOutlet var addMemberButton: UIButton!
     @IBOutlet var memberScrollView: UIScrollView!
     @IBOutlet var destinationTextField: UITextField!
-    @IBOutlet var mapImageView: UIImageView!
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet var curfewTimePicker: UIDatePicker!
     @IBOutlet var createOutingButton: UIButton!
+    
+    
     
     var dismissBlock:(() -> Void)! = {}
     
@@ -76,11 +80,34 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
         print("viewDidLoad")
         addMemberButton.layer.cornerRadius = 15.0
         createOutingButton.layer.cornerRadius = 8.0
-        mapImageView.layer.cornerRadius = 10.0
+        createOutingButton.layer.borderColor = UIColor.whiteColor().CGColor
+        createOutingButton.layer.borderWidth = 1.0
+        
+        curfewTimePicker.setValue(UIColor.whiteColor(), forKey: "textColor")
+        curfewTimePicker.sendAction("setHighlightsToday:", to: nil, forEvent: nil)
         
         outingNameTextField.delegate = self
         destinationTextField.delegate = self
         
+        
+        
+        mapView.layer.cornerRadius = 25.0
+        
+        // Add a google Map View
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        let camera = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.20, zoom: 6.0)
+        self.mapView.camera = camera
+        //mapView = GMSMapView.mapWithFrame(CGRect.zero, camera: camera)
+        mapView.myLocationEnabled = true
+        //view = mapView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mapView
         
     }
     
@@ -128,11 +155,56 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     
     func postOuting(name:String, destination:String) {
         
+        let parameters = [
+            "name":name,
+            "destination":destination,
+            "turd": "ferguson"
+        ]
+        
+        Alamofire.request(.POST, "https://glo-app.herokuapp.com/createOuting", parameters: parameters, encoding: .JSON)
+                .responseJSON { response in
+                    print("here's the request", response.request)  // original URL request
+                    print("here's the URL Response", response.response) // URL response
+                    print("here's the server data", response.data)     // server data
+                    print("here's the result of response serialization", response.result)   // result of response serialization
+                
+                    if let JSON = response.result.value {
+                        print("Alamofire JSON response: \(JSON)")
+                        
+                        // This returns the lat and lon of the address that was just entered. Take that, save it as the lat and lon of the current outing, use that to draw the pin/center the map for the outing view
+                        print("AAWWWOOOOKKK lat", JSON.objectForKey("lat"))
+                        print("annnd lon: ", JSON.objectForKey("lng"))
+                        
+                        NSUserDefaults.standardUserDefaults().setObject(JSON.objectForKey("lat"), forKey: "currentOutingLat")
+                        NSUserDefaults.standardUserDefaults().setObject(JSON.objectForKey("lng"), forKey: "currentOutingLng")
+                        
+                        
+                    } else {
+                        print("Failure posting outing!")
+                    }
+                }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
             // TODO: Consider moving this request to CliqueDataStore so other classes can call it.
             //Set postData as nil just in case it had some other value
             postData = nil
         
+            //TODO: Replace all this shenanigans with alamofire
+        
+        
             // TODO: Below can be replaced with cliqueObject.
+        
+        /*
+        
         let vars = NSMutableDictionary.init(dictionary: ["name":name, "destination":destination])
         
             
@@ -190,6 +262,9 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
                 }
             }
             task.resume()
+        */
+        
+        
         }
 
     

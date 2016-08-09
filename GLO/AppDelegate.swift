@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("app did finish launching with options")
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         
+        // Google Maps Config
+        GMSServices.provideAPIKey("AIzaSyBY5PwOMXnsTKQifiyxLNJerny4R4MNDJg")
         
+        // Google Places Config
+        GoogleMapsService.provideAPIKey("AIzaSyBY5PwOMXnsTKQifiyxLNJerny4R4MNDJg")
+        
+        
+        // Parse Server Config
         Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
             configuration.server = "https://glo-app.herokuapp.com/parse/" // '/' important after 'parse'
             configuration.applicationId = "3DSGLOBALROUNDUP"

@@ -8,12 +8,17 @@
 
 import Foundation
 import UIKit
+import QuartzCore
 import SocketIOClientSwift
+import GoogleMaps
 
 class OutingViewController:UIViewController {
     
     ////// Testing out Socket.io
-    let socket = SocketIOClient(socketURL: NSURL(string: "https://pure-caverns-99011.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
+    let socket = SocketIOClient(socketURL: NSURL(string: "https://glo-app.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
+    
+    @IBOutlet weak var mapView: GMSMapView!
+    
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +42,35 @@ class OutingViewController:UIViewController {
         
         addHandlers()
         socket.connect()
+        
+        mapView.layer.cornerRadius = 25.0
+        
+        // Add a google Map View
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        
+        // Get current Outing lat and lng as floats
+        
+        //TODO: This lat and lng data should pull from the backend so that all users get the same data
+        
+        let lat = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLat") as! Double
+        let lng = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLng") as! Double
+        
+        print("CURRENT OUTING LAT: ", lat, " AND LNG: ", lng)
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(lat, longitude: lng, zoom: 3.0)
+        self.mapView.camera = camera
+        //mapView = GMSMapView.mapWithFrame(CGRect.zero, camera: camera)
+        mapView.myLocationEnabled = true
+        //view = mapView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        marker.title = "Outing Destination"
+        marker.snippet = "Party Time"
+        marker.map = mapView
+        
         
     }
     

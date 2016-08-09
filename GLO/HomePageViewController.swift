@@ -83,9 +83,9 @@ class HomePageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func presentCurrentVC(sender: AnyObject) {
         
-        let covc = CurrentOutingViewController.init()
+        let ovc = OutingViewController.init()
         
-        self.presentViewController(covc, animated: true, completion: nil)
+        self.presentViewController(ovc, animated: true, completion: nil)
         
     }
     
