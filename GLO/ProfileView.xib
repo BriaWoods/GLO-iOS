@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="GLO" customModuleProvider="target">
+            <connections>
+                <outlet property="friendCountLabel" destination="c3j-Us-V8h" id="Hg3-H5-M6z"/>
+                <outlet property="homeBaseMapView" destination="Iek-lP-Eqw" id="Fza-dA-V6J"/>
+                <outlet property="nameLabel" destination="Xu5-xu-ymc" id="CQi-b4-Iz9"/>
+                <outlet property="outingCountLabel" destination="RLz-M0-iF3" id="fNV-Yo-DRj"/>
+                <outlet property="phoneNumberLabel" destination="B8B-1e-BBy" id="a2F-j4-J5q"/>
+                <outlet property="profileImageView" destination="RUu-af-SlD" id="cpx-VI-det"/>
+                <outlet property="updateHomebaseButton" destination="rDi-YT-cur" id="8wR-lC-gbw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="qCJ-I8-TFu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xu5-xu-ymc" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="182" y="104" width="168" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="168" id="Krd-Zw-6dV"/>
+                        <constraint firstAttribute="height" constant="36" id="r0a-ib-ylN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-1e-BBy" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="175" y="148" width="182" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="ay3-kU-tJE"/>
+                        <constraint firstAttribute="height" constant="55" id="leZ-WQ-1VA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-cp-xRa" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="59" y="265" width="96" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="8NC-fU-39a"/>
+                        <constraint firstAttribute="width" constant="96" id="9kv-PH-qSx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="52" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLz-M0-iF3" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="41" y="202" width="133" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="133" id="elF-aC-Ecv"/>
+                        <constraint firstAttribute="height" constant="55" id="h1D-On-nou"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="38"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co-Pilots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf4-8e-L2A" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="219" y="265" width="96" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="GwL-Ng-RKO"/>
+                        <constraint firstAttribute="width" constant="96" id="HvT-DD-k5g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="237" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3j-Us-V8h" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="200" y="202" width="133" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="XOd-za-kLb"/>
+                        <constraint firstAttribute="width" constant="133" id="ZJf-pb-7Jy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="38"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iek-lP-Eqw" customClass="GMSMapView">
+                    <rect key="frame" x="62" y="336" width="250" height="250"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="9HJ-HW-5A4"/>
+                        <constraint firstAttribute="width" constant="250" id="gVt-10-L9m"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDi-YT-cur">
+                    <rect key="frame" x="116" y="597" width="143" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="143" id="be4-cb-Sgz"/>
+                        <constraint firstAttribute="height" constant="35" id="c56-AE-wzw"/>
+                    </constraints>
+                    <state key="normal" title="Update Homebase">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Homebase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE1-hV-uEB" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="71" y="296" width="232" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="bLr-dn-qHM"/>
+                        <constraint firstAttribute="width" constant="232" id="m6a-yr-q8H"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Raekwon" translatesAutoresizingMaskIntoConstraints="NO" id="RUu-af-SlD">
+                    <rect key="frame" x="42" y="73" width="130" height="130"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="DUk-XI-obp"/>
+                        <constraint firstAttribute="width" constant="130" id="gte-gF-z3o"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="B8B-1e-BBy" firstAttribute="centerX" secondItem="Xu5-xu-ymc" secondAttribute="centerX" id="1ba-zl-bBY"/>
+                <constraint firstItem="c3j-Us-V8h" firstAttribute="centerY" secondItem="RLz-M0-iF3" secondAttribute="centerY" id="2Hc-Xl-Uxg"/>
+                <constraint firstItem="B8B-1e-BBy" firstAttribute="top" secondItem="RUu-af-SlD" secondAttribute="bottom" constant="-55" id="39Y-ya-8Qh"/>
+                <constraint firstItem="rDi-YT-cur" firstAttribute="top" secondItem="Iek-lP-Eqw" secondAttribute="bottom" constant="11" id="3Y8-9G-zjy"/>
+                <constraint firstItem="RUu-af-SlD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="73" id="4yr-QX-DX3"/>
+                <constraint firstItem="RLz-M0-iF3" firstAttribute="centerX" secondItem="RUu-af-SlD" secondAttribute="centerX" id="5Ct-HQ-bLh"/>
+                <constraint firstItem="RUu-af-SlD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-80" id="8nV-Qa-ViT"/>
+                <constraint firstItem="vf4-8e-L2A" firstAttribute="top" secondItem="c3j-Us-V8h" secondAttribute="bottom" constant="8" id="Efc-uj-mtc"/>
+                <constraint firstItem="RLz-M0-iF3" firstAttribute="top" secondItem="RUu-af-SlD" secondAttribute="bottom" constant="-1" id="GnH-kX-hjP"/>
+                <constraint firstItem="vf4-8e-L2A" firstAttribute="centerX" secondItem="c3j-Us-V8h" secondAttribute="centerX" id="Qa7-fd-33n"/>
+                <constraint firstItem="Iek-lP-Eqw" firstAttribute="top" secondItem="IE1-hV-uEB" secondAttribute="bottom" constant="2" id="ThM-bb-Lde"/>
+                <constraint firstItem="JdH-cp-xRa" firstAttribute="centerX" secondItem="RLz-M0-iF3" secondAttribute="centerX" id="Ysw-sL-MtK"/>
+                <constraint firstItem="rDi-YT-cur" firstAttribute="centerX" secondItem="Iek-lP-Eqw" secondAttribute="centerX" id="a8q-H0-O0C"/>
+                <constraint firstItem="IE1-hV-uEB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dKY-8N-FCC"/>
+                <constraint firstItem="Xu5-xu-ymc" firstAttribute="leading" secondItem="RUu-af-SlD" secondAttribute="trailing" constant="10" id="fi2-UA-Vwf"/>
+                <constraint firstItem="Iek-lP-Eqw" firstAttribute="centerX" secondItem="IE1-hV-uEB" secondAttribute="centerX" id="i5G-Y5-v39"/>
+                <constraint firstItem="c3j-Us-V8h" firstAttribute="centerX" secondItem="B8B-1e-BBy" secondAttribute="centerX" id="jIi-fU-bnn"/>
+                <constraint firstItem="RUu-af-SlD" firstAttribute="top" secondItem="Xu5-xu-ymc" secondAttribute="bottom" constant="-67" id="jJx-3B-fPM"/>
+                <constraint firstItem="IE1-hV-uEB" firstAttribute="top" secondItem="vf4-8e-L2A" secondAttribute="bottom" constant="3" id="lMX-vX-WTW"/>
+                <constraint firstItem="JdH-cp-xRa" firstAttribute="top" secondItem="RLz-M0-iF3" secondAttribute="bottom" constant="8" id="m8b-oQ-gEd"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="243.5" y="233.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Raekwon" width="639" height="400"/>
+    </resources>
+</document>

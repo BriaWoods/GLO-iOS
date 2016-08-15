@@ -17,14 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMW-0e-Jib" userLabel="GLOTitleLabel">
-                    <rect key="frame" x="157" y="52" width="61" height="37"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GLO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMW-0e-Jib" userLabel="GLOTitleLabel" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                    <rect key="frame" x="157" y="68" width="61" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="UyZ-Ez-3U3"/>
                         <constraint firstAttribute="width" constant="61" id="jv7-oA-iWH"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="31"/>
-                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfn-At-Wsa" userLabel="CreateOutingContainerView">
@@ -37,7 +37,7 @@
                                 <constraint firstAttribute="height" constant="21" id="d7a-bt-tD5"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-mk-diZ">
@@ -47,7 +47,9 @@
                                 <constraint firstAttribute="width" constant="30" id="Nlu-WN-MAh"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="44"/>
-                            <state key="normal" title="+"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="createOutingButton:" destination="-1" eventType="touchUpInside" id="uFC-A7-FMM"/>
                             </connections>
@@ -73,7 +75,9 @@
                                 <constraint firstAttribute="width" constant="102" id="yhq-uy-ech"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                            <state key="normal" title="Current Outing"/>
+                            <state key="normal" title="Current Outing">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
                                     <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,7 +106,7 @@
                                 <constraint firstAttribute="width" constant="99" id="zds-Vc-ZZg"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plc-y9-97M">
@@ -112,7 +116,9 @@
                                 <constraint firstAttribute="height" constant="68" id="oyI-24-h3m"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="44"/>
-                            <state key="normal" title="+"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="createPosseButton:" destination="-1" eventType="touchUpInside" id="1mH-3y-Nfk"/>
                             </connections>
@@ -136,14 +142,14 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="dfn-At-Wsa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Xq-3z-uPl"/>
                 <constraint firstItem="xR2-In-xYe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5It-Cu-958"/>
                 <constraint firstItem="aMW-0e-Jib" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7Rm-Nq-lE0"/>
                 <constraint firstItem="wjW-ss-Boo" firstAttribute="top" secondItem="xR2-In-xYe" secondAttribute="bottom" constant="87" id="E78-67-2iO"/>
                 <constraint firstAttribute="bottom" secondItem="Ag2-xU-cGS" secondAttribute="bottom" constant="15" id="JWR-sR-dIj"/>
-                <constraint firstItem="dfn-At-Wsa" firstAttribute="top" secondItem="aMW-0e-Jib" secondAttribute="bottom" constant="30" id="PRi-DP-HtE"/>
+                <constraint firstItem="dfn-At-Wsa" firstAttribute="top" secondItem="aMW-0e-Jib" secondAttribute="bottom" constant="14" id="PRi-DP-HtE"/>
                 <constraint firstItem="Ag2-xU-cGS" firstAttribute="top" secondItem="wjW-ss-Boo" secondAttribute="bottom" constant="8" id="Pn8-7I-k8Z"/>
                 <constraint firstAttribute="trailing" secondItem="xR2-In-xYe" secondAttribute="trailing" id="V5n-d4-85c"/>
                 <constraint firstAttribute="trailing" secondItem="wjW-ss-Boo" secondAttribute="trailing" id="XIo-TX-uWT"/>
@@ -151,9 +157,10 @@
                 <constraint firstAttribute="trailing" secondItem="Ag2-xU-cGS" secondAttribute="trailing" id="bwd-Sp-Rv5"/>
                 <constraint firstItem="xR2-In-xYe" firstAttribute="top" secondItem="dfn-At-Wsa" secondAttribute="bottom" constant="40" id="dlY-FL-aLV"/>
                 <constraint firstAttribute="trailing" secondItem="dfn-At-Wsa" secondAttribute="trailing" id="lUh-Pw-Z2u"/>
-                <constraint firstItem="aMW-0e-Jib" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="52" id="mcr-65-c01"/>
+                <constraint firstItem="aMW-0e-Jib" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="68" id="mcr-65-c01"/>
                 <constraint firstItem="Ag2-xU-cGS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="otW-Ot-0E8"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>

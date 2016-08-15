@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactTableCell" rowHeight="83" id="KGk-i7-Jjw" customClass="ContactTableViewCell" customModule="GLO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CQw-rB-OnT">
+                        <rect key="frame" x="0.0" y="0.0" width="87" height="82"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="CQw-rB-OnT" secondAttribute="height" multiplier="87:82" id="5Lj-xL-bzQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-zx-eHZ" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                        <rect key="frame" x="112" y="16" width="45" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEs-xX-4XJ" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
+                        <rect key="frame" x="112" y="45" width="62" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-g6-eex">
+                        <rect key="frame" x="246" y="26" width="46" height="30"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="CQw-rB-OnT" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="0w9-Ph-Id6"/>
+                    <constraint firstItem="lhC-g6-eex" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="31f-Iu-YDA"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lhC-g6-eex" secondAttribute="trailing" constant="20" id="BSd-aE-zba"/>
+                    <constraint firstItem="XEs-xX-4XJ" firstAttribute="top" secondItem="AkU-zx-eHZ" secondAttribute="bottom" constant="8" id="Owv-UJ-Emb"/>
+                    <constraint firstItem="XEs-xX-4XJ" firstAttribute="leading" secondItem="AkU-zx-eHZ" secondAttribute="leading" id="SnF-qE-XS3"/>
+                    <constraint firstItem="CQw-rB-OnT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xpm-rs-4mk"/>
+                    <constraint firstItem="AkU-zx-eHZ" firstAttribute="leading" secondItem="CQw-rB-OnT" secondAttribute="trailing" constant="25" id="hj2-8g-mrb"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="CQw-rB-OnT" secondAttribute="leading" constant="8" id="pjs-NU-xbB"/>
+                    <constraint firstItem="CQw-rB-OnT" firstAttribute="top" secondItem="AkU-zx-eHZ" secondAttribute="bottom" constant="-37" id="qUu-O1-w0I"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="202" y="241.5"/>
+        </tableViewCell>
+    </objects>
+</document>

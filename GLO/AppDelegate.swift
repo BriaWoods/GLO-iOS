@@ -76,19 +76,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let hpvc = HomePageViewController.init()
         
-        self.window?.rootViewController = hpvc
+        let hpnc = UINavigationController.init(rootViewController: hpvc)
+        
+        self.window?.rootViewController = hpnc
         
         self.window!.makeKeyAndVisible()
         
         var currentUser = PFUser.currentUser()
         if currentUser != nil {
+            
             print("Houston we have a user")
+            
         } else {
+            
             print("present the login!")
             //let storyboard = UIStoryboard.init(name: "LoginStoryboard", bundle: nil)
             let storyboard = UIStoryboard.init(name: "PhoneLogin", bundle: nil)
             self.window?.rootViewController?.presentViewController(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+            
         }
+        
+        
         
         return true
     }
@@ -118,3 +126,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension UIButton {
+    
+    override public func drawRect(rect: CGRect) {
+        
+        // Overriding draw rect to add in a glow around border
+        let shadowOffset = CGSizeMake(0.0, -3.0)
+        let shadowRadius:CGFloat = 5.0
+        let context = UIGraphicsGetCurrentContext()
+        
+        
+        CGContextSetShadowWithColor(context, shadowOffset, shadowRadius, UIColor.whiteColor().CGColor);
+        
+        // End by calling super.shadow
+        super.drawRect(rect)
+    }
+    
+}

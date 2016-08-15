@@ -22,6 +22,17 @@
 		9571B3F0EE79D899B8D5AFA4 /* Pods_GLO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E826A68BCB85FB08BD2FE4 /* Pods_GLO.framework */; };
 		E204E8DB1D541F7F006CF631 /* PhoneLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E204E8DA1D541F7E006CF631 /* PhoneLogin.storyboard */; };
 		E204E8E11D54EC71006CF631 /* PhoneLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8E01D54EC71006CF631 /* PhoneLoginController.swift */; };
+		E204E8E71D5BDB0B006CF631 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8E31D5BDB0B006CF631 /* SideMenuManager.swift */; };
+		E204E8E81D5BDB0B006CF631 /* SideMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8E41D5BDB0B006CF631 /* SideMenuTransition.swift */; };
+		E204E8E91D5BDB0B006CF631 /* UISideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8E51D5BDB0B006CF631 /* UISideMenuNavigationController.swift */; };
+		E204E8EA1D5BDB0B006CF631 /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8E61D5BDB0B006CF631 /* UITableViewVibrantCell.swift */; };
+		E204E8EC1D5BE91B006CF631 /* SideMenuTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8EB1D5BE91B006CF631 /* SideMenuTableController.swift */; };
+		E204E8EF1D5C0E22006CF631 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8ED1D5C0E22006CF631 /* ContactTableViewController.swift */; };
+		E204E8F31D5CFDD8006CF631 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8F11D5CFDD8006CF631 /* ContactTableViewCell.swift */; };
+		E204E8F41D5CFDD8006CF631 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E204E8F21D5CFDD8006CF631 /* ContactTableViewCell.xib */; };
+		E204E8F81D5D2C00006CF631 /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */; };
+		E204E90D1D5EEE36006CF631 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E90C1D5EEE35006CF631 /* ProfileViewController.swift */; };
+		E204E90F1D5EEE9E006CF631 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E204E90E1D5EEE9E006CF631 /* ProfileView.xib */; };
 		E213CB481D318C8600BFCF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213CB471D318C8600BFCF3E /* AppDelegate.swift */; };
 		E213CB4F1D318C8700BFCF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E213CB4E1D318C8700BFCF3E /* Assets.xcassets */; };
 		E213CB521D318C8700BFCF3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213CB501D318C8700BFCF3E /* LaunchScreen.storyboard */; };
@@ -36,6 +47,9 @@
 		E213CBC81D31EC5E00BFCF3E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213CBC71D31EC5E00BFCF3E /* SignUpController.swift */; };
 		E213CBCA1D322F6C00BFCF3E /* CreateOutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213CBC91D322F6C00BFCF3E /* CreateOutingViewController.swift */; };
 		E213CBCC1D322FF400BFCF3E /* CreateOutingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E213CBCB1D322FF400BFCF3E /* CreateOutingView.xib */; };
+		E22B5E1D1D6172FD006B264F /* DeetsEntryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */; };
+		E22B5E291D619645006B264F /* EnterDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E271D619644006B264F /* EnterDeetsViewController.swift */; };
+		E22B5E2A1D619645006B264F /* EnterDeetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22B5E281D619644006B264F /* EnterDeetsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +88,17 @@
 		9AAF5A4DC03275B14EBEF682 /* Pods_GLOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GLOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E204E8DA1D541F7E006CF631 /* PhoneLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhoneLogin.storyboard; sourceTree = "<group>"; };
 		E204E8E01D54EC71006CF631 /* PhoneLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginController.swift; sourceTree = "<group>"; };
+		E204E8E31D5BDB0B006CF631 /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuManager.swift; sourceTree = "<group>"; };
+		E204E8E41D5BDB0B006CF631 /* SideMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTransition.swift; sourceTree = "<group>"; };
+		E204E8E51D5BDB0B006CF631 /* UISideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISideMenuNavigationController.swift; sourceTree = "<group>"; };
+		E204E8E61D5BDB0B006CF631 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		E204E8EB1D5BE91B006CF631 /* SideMenuTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableController.swift; sourceTree = "<group>"; };
+		E204E8ED1D5C0E22006CF631 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
+		E204E8F11D5CFDD8006CF631 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		E204E8F21D5CFDD8006CF631 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
+		E204E90C1D5EEE35006CF631 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E204E90E1D5EEE9E006CF631 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		E213CB441D318C8600BFCF3E /* GLO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213CB471D318C8600BFCF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213CB4E1D318C8700BFCF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +119,9 @@
 		E213CBC71D31EC5E00BFCF3E /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		E213CBC91D322F6C00BFCF3E /* CreateOutingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOutingViewController.swift; sourceTree = "<group>"; };
 		E213CBCB1D322FF400BFCF3E /* CreateOutingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateOutingView.xib; sourceTree = "<group>"; };
+		E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DeetsEntryStoryboard.storyboard; sourceTree = "<group>"; };
+		E22B5E271D619644006B264F /* EnterDeetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterDeetsViewController.swift; sourceTree = "<group>"; };
+		E22B5E281D619644006B264F /* EnterDeetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterDeetsViewController.xib; sourceTree = "<group>"; };
 		E89FA7F73D9CB9CB70BAF800 /* Pods-GLOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLOUITests/Pods-GLOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EA98D2B257492F402F839C2B /* Pods-GLO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLO.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLO/Pods-GLO.release.xcconfig"; sourceTree = "<group>"; };
 		F02A22EFA54D5400CDA69F4A /* Pods_GLOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GLOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +178,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E204E8E21D5BDA9C006CF631 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E204E8E31D5BDB0B006CF631 /* SideMenuManager.swift */,
+				E204E8E41D5BDB0B006CF631 /* SideMenuTransition.swift */,
+				E204E8E51D5BDB0B006CF631 /* UISideMenuNavigationController.swift */,
+				E204E8E61D5BDB0B006CF631 /* UITableViewVibrantCell.swift */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
 		E213CB3B1D318C8400BFCF3E = {
 			isa = PBXGroup;
 			children = (
@@ -175,17 +214,27 @@
 		E213CB461D318C8600BFCF3E /* GLO */ = {
 			isa = PBXGroup;
 			children = (
+				E204E8E21D5BDA9C006CF631 /* SideMenu */,
 				E213CB471D318C8600BFCF3E /* AppDelegate.swift */,
+				E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */,
 				6DF37A5B1D322A29001CB513 /* ContactsTableViewCell.swift */,
 				6DF37A5C1D322A29001CB513 /* ContactsTableViewCell.xib */,
 				6DF37A531D3200FC001CB513 /* ContactsViewController.swift */,
 				6DF37A541D3200FC001CB513 /* ContactsViewController.xib */,
 				6DF37A4F1D31EC0E001CB513 /* PosseNameViewController.swift */,
 				6DF37A501D31EC0E001CB513 /* PosseNameViewController.xib */,
-				6D1B79381D31BC7F00485280 /* PosseTableViewCell.xib */,
 				6D1B79371D31BC7F00485280 /* PosseTableViewCell.swift */,
+				6D1B79381D31BC7F00485280 /* PosseTableViewCell.xib */,
 				E213CB771D31955B00BFCF3E /* HomePageViewController.swift */,
 				E213CB751D31952E00BFCF3E /* HomePageView.xib */,
+				E204E8EB1D5BE91B006CF631 /* SideMenuTableController.swift */,
+				E22B5E271D619644006B264F /* EnterDeetsViewController.swift */,
+				E22B5E281D619644006B264F /* EnterDeetsViewController.xib */,
+				E204E90C1D5EEE35006CF631 /* ProfileViewController.swift */,
+				E204E90E1D5EEE9E006CF631 /* ProfileView.xib */,
+				E204E8ED1D5C0E22006CF631 /* ContactTableViewController.swift */,
+				E204E8F11D5CFDD8006CF631 /* ContactTableViewCell.swift */,
+				E204E8F21D5CFDD8006CF631 /* ContactTableViewCell.xib */,
 				E213CBC91D322F6C00BFCF3E /* CreateOutingViewController.swift */,
 				E213CBCB1D322FF400BFCF3E /* CreateOutingView.xib */,
 				E213CBBF1D31DAB800BFCF3E /* OutingViewController.swift */,
@@ -199,6 +248,7 @@
 				E213CB501D318C8700BFCF3E /* LaunchScreen.storyboard */,
 				E213CBC31D31DF8700BFCF3E /* LoginStoryboard.storyboard */,
 				E204E8DA1D541F7E006CF631 /* PhoneLogin.storyboard */,
+				E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */,
 				E213CB531D318C8700BFCF3E /* Info.plist */,
 			);
 			path = GLO;
@@ -336,9 +386,12 @@
 			files = (
 				6D1B793A1D31BC7F00485280 /* PosseTableViewCell.xib in Resources */,
 				6DF37A5E1D322A29001CB513 /* ContactsTableViewCell.xib in Resources */,
+				E204E90F1D5EEE9E006CF631 /* ProfileView.xib in Resources */,
 				6DF37A561D3200FC001CB513 /* ContactsViewController.xib in Resources */,
 				E213CB521D318C8700BFCF3E /* LaunchScreen.storyboard in Resources */,
+				E22B5E1D1D6172FD006B264F /* DeetsEntryStoryboard.storyboard in Resources */,
 				E213CB761D31952E00BFCF3E /* HomePageView.xib in Resources */,
+				E204E8F41D5CFDD8006CF631 /* ContactTableViewCell.xib in Resources */,
 				E213CBCC1D322FF400BFCF3E /* CreateOutingView.xib in Resources */,
 				E213CBC41D31DF8700BFCF3E /* LoginStoryboard.storyboard in Resources */,
 				E204E8DB1D541F7F006CF631 /* PhoneLogin.storyboard in Resources */,
@@ -346,6 +399,7 @@
 				E213CBC21D31DAB800BFCF3E /* OutingView.xib in Resources */,
 				6D440F351D32A2440013320E /* CurrentOutingViewController.xib in Resources */,
 				6DF37A521D31EC0E001CB513 /* PosseNameViewController.xib in Resources */,
+				E22B5E2A1D619645006B264F /* EnterDeetsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,17 +547,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E204E8E81D5BDB0B006CF631 /* SideMenuTransition.swift in Sources */,
+				E22B5E291D619645006B264F /* EnterDeetsViewController.swift in Sources */,
 				6DF37A5D1D322A29001CB513 /* ContactsTableViewCell.swift in Sources */,
 				6D1B79391D31BC7F00485280 /* PosseTableViewCell.swift in Sources */,
 				6DF37A551D3200FC001CB513 /* ContactsViewController.swift in Sources */,
 				E213CBC61D31EBC600BFCF3E /* LoginController.swift in Sources */,
+				E204E8F31D5CFDD8006CF631 /* ContactTableViewCell.swift in Sources */,
+				E204E8E71D5BDB0B006CF631 /* SideMenuManager.swift in Sources */,
 				E213CBC81D31EC5E00BFCF3E /* SignUpController.swift in Sources */,
+				E204E8EC1D5BE91B006CF631 /* SideMenuTableController.swift in Sources */,
 				E213CBCA1D322F6C00BFCF3E /* CreateOutingViewController.swift in Sources */,
+				E204E8F81D5D2C00006CF631 /* ShadowLabel.swift in Sources */,
 				E213CBC11D31DAB800BFCF3E /* OutingViewController.swift in Sources */,
 				6DF37A511D31EC0E001CB513 /* PosseNameViewController.swift in Sources */,
 				E204E8E11D54EC71006CF631 /* PhoneLoginController.swift in Sources */,
 				E213CB781D31955B00BFCF3E /* HomePageViewController.swift in Sources */,
+				E204E8E91D5BDB0B006CF631 /* UISideMenuNavigationController.swift in Sources */,
+				E204E8EF1D5C0E22006CF631 /* ContactTableViewController.swift in Sources */,
 				6D440F341D32A2440013320E /* CurrentOutingViewController.swift in Sources */,
+				E204E90D1D5EEE36006CF631 /* ProfileViewController.swift in Sources */,
+				E204E8EA1D5BDB0B006CF631 /* UITableViewVibrantCell.swift in Sources */,
 				E213CB481D318C8600BFCF3E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
