@@ -1,0 +1,38 @@
+#XCode
+#
+# gitignore
+
+#Build generated
+build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xcuserstate
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## CocoaPods
+#
+# The reason I am ignoring checking the pods directory is because it is too large to fit on a regular git repo.
+# Once we update the git repo, it it likely a good idea to recheck the Pods directory.
+Pods/
