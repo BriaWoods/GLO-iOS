@@ -50,6 +50,7 @@
 		E22B5E1D1D6172FD006B264F /* DeetsEntryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */; };
 		E22B5E291D619645006B264F /* EnterDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E271D619644006B264F /* EnterDeetsViewController.swift */; };
 		E22B5E2A1D619645006B264F /* EnterDeetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22B5E281D619644006B264F /* EnterDeetsViewController.xib */; };
+		E22B5E2C1D62F178006B264F /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DeetsEntryStoryboard.storyboard; sourceTree = "<group>"; };
 		E22B5E271D619644006B264F /* EnterDeetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterDeetsViewController.swift; sourceTree = "<group>"; };
 		E22B5E281D619644006B264F /* EnterDeetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterDeetsViewController.xib; sourceTree = "<group>"; };
+		E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
 		E89FA7F73D9CB9CB70BAF800 /* Pods-GLOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLOUITests/Pods-GLOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EA98D2B257492F402F839C2B /* Pods-GLO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLO.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLO/Pods-GLO.release.xcconfig"; sourceTree = "<group>"; };
 		F02A22EFA54D5400CDA69F4A /* Pods_GLOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GLOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 				E204E8E21D5BDA9C006CF631 /* SideMenu */,
 				E213CB471D318C8600BFCF3E /* AppDelegate.swift */,
 				E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */,
+				E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */,
 				6DF37A5B1D322A29001CB513 /* ContactsTableViewCell.swift */,
 				6DF37A5C1D322A29001CB513 /* ContactsTableViewCell.xib */,
 				6DF37A531D3200FC001CB513 /* ContactsViewController.swift */,
@@ -552,6 +555,7 @@
 				6DF37A5D1D322A29001CB513 /* ContactsTableViewCell.swift in Sources */,
 				6D1B79391D31BC7F00485280 /* PosseTableViewCell.swift in Sources */,
 				6DF37A551D3200FC001CB513 /* ContactsViewController.swift in Sources */,
+				E22B5E2C1D62F178006B264F /* KDCircularProgress.swift in Sources */,
 				E213CBC61D31EBC600BFCF3E /* LoginController.swift in Sources */,
 				E204E8F31D5CFDD8006CF631 /* ContactTableViewCell.swift in Sources */,
 				E204E8E71D5BDB0B006CF631 /* SideMenuManager.swift in Sources */,

@@ -10,8 +10,8 @@ target 'GLO' do
   pod 'Parse'
   pod 'Alamofire', '~> 3.4'
   pod 'GoogleMaps'
-  pod 'GooglePlaces' 
-  pod 'GooglePlacesAutocomplete'
+  pod 'GooglePlacesAPI' 
+
   target 'GLOTests' do
     inherit! :search_paths
     # Pods for testing

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Parse
 import GoogleMaps
 import QuartzCore
+import GooglePlacesAPI
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate {
     
@@ -16,6 +18,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var nameLabel: ShadowLabel!
     @IBOutlet weak var phoneNumberLabel: ShadowLabel!
     
+    var homeBaseMarker:GMSMarker?
     @IBOutlet weak var homeBaseMapView: GMSMapView!
     @IBOutlet weak var updateHomebaseButton: UIButton!
     
@@ -26,6 +29,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         homeBaseMapView.layer.cornerRadius = max(homeBaseMapView.frame.size.height / 2.0, homeBaseMapView.frame.size.width / 2.0)
         
@@ -39,6 +43,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         
         // TODO: The lat and long should be initialized from Coordinates stored in NSUserDefaults.standardUserDefaults
+        
+        /* Replacing this code with the setHomeBaseMarker() function
         let lat:Double = 40.7128
         let lon:Double = 74.0059
         
@@ -53,6 +59,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         marker.title = "Outing Destination"
         marker.snippet = "Party Time"
         marker.map = homeBaseMapView
+        */
+        
+        setHomeBaseMarker()
         
         profileImageView.layer.masksToBounds = true
         profileImageView.layer.cornerRadius = max(profileImageView.frame.size.height / 2.0, profileImageView.frame.size.width / 2.0)
@@ -60,9 +69,40 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // TODO: Add tap gesture recognizer to profile pic that pushes the camera view (so you can take a selfie).
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:Selector("takePicture:")))
         
+        if ((NSUserDefaults.standardUserDefaults().objectForKey("ProfilePic")) != nil) {
+            // If there is a saved profile pic, set that as the image
+            let imageData = NSUserDefaults.standardUserDefaults().objectForKey("ProfilePic") as! NSData
+            let image = UIImage.init(data: imageData)
+            profileImageView.image = image
+        } else {
+            // Otherwise set it as Raekwon
+            profileImageView.image = UIImage.init(named: "Raekwon")
+        }
+        
+        //Set name and description labels
+        nameLabel.text = NSUserDefaults.standardUserDefaults().objectForKey("Name") as! String
+        phoneNumberLabel.text = PFUser.currentUser()?.username
+        
     }
     
-    
+    func setHomeBaseMarker() {
+        // Remove current marker before initializing a new one
+        
+        homeBaseMarker?.map = nil
+        
+        let homeBaseLat = NSUserDefaults.standardUserDefaults().objectForKey("HomeBaseLat") as! CLLocationDegrees
+        let homeBaseLon = NSUserDefaults.standardUserDefaults().objectForKey("HomeBaseLon") as! CLLocationDegrees
+        
+        homeBaseMarker = GMSMarker.init(position: CLLocationCoordinate2D(latitude: homeBaseLat, longitude: homeBaseLon))
+        homeBaseMarker?.map = homeBaseMapView
+        
+        
+        // Center the Map View around the newly drawn marker
+        let camera = GMSCameraPosition.cameraWithLatitude(homeBaseLat, longitude: homeBaseLon, zoom: 3.0)
+        homeBaseMapView.camera = camera
+        homeBaseMapView.myLocationEnabled = true
+        
+    }
     
     func takePicture(sender: AnyObject) {
     
@@ -109,6 +149,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tappedUpdateHomeBase(sender: AnyObject) {
+        print("called tappedSetHomeBase")
+        
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
+    }
     
     // MARK: Image Picker Protocol
     
@@ -135,3 +182,45 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
 }
+
+extension ProfileViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        print("Place Coordinates: ", place.coordinate)
+        
+        // This is where I set the user's home base coordinates in user defaults
+        NSUserDefaults.standardUserDefaults().setObject(place.coordinate.latitude, forKey: "HomeBaseLat")
+        NSUserDefaults.standardUserDefaults().setObject(place.coordinate.longitude, forKey: "HomeBaseLon")
+        
+        // TODO: Draw marker at and center around these coordinates on the map. I will call an update map pin function, and will need a homeBasePin GMSMarker property.
+        setHomeBaseMarker()
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
+}
+
+

@@ -218,6 +218,8 @@ class OutingViewController:UIViewController {
             newMember.name = data[1] as! String
             newMember.description = data[2] as! String
             
+            // TODO: Add in GET for pulling the newUser's profile image from Parse, then once that is finished, set the profile pic as the member's "user image" property, then add that member to the memberDict on completion of pulling the image.
+            
             self.memberDict[newMember.clientID] = newMember
         }
     }

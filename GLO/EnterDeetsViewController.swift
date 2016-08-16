@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Parse
+import GooglePlacesAPI
+import GoogleMaps
 
 class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate {
 
@@ -46,6 +49,9 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,6 +59,13 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func tappedSetHomeBase(sender: AnyObject) {
+        // TODO: Present the location address selector, so that the user can choose their location
+        print("called tappedSetHomeBase")
+        
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
+        
     }
 
     @IBAction func tappedCompleteButton(sender: AnyObject) {
@@ -65,8 +78,8 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
             pushAlertView("Enter Your Name", message: "Make sure you enter your name so that your friends know who you are!")
         } else if (descriptionTextField.text == "") {
             pushAlertView("Enter a Description", message: "Enter a one-liner that your friends can see and laugh at.")
-        } else if (userDefaults.objectForKey("HomeBaseCoordinates") == nil) {
-            pushAlertView("Set a Home Base", message: "Tap on the 'Set Home Base' button to set your home base (where you plan on ending up after an outing")
+        } else if (userDefaults.objectForKey("HomeBaseLat") == nil || userDefaults.objectForKey("HomeBaseLon") == nil) {
+            pushAlertView("Set a Home Base", message: "Tap on the 'Set Home Base' button to set your home base (where you plan on ending up after an outing).")
         } else {
             print("All deets are either entered or configured, proceed!")
             
@@ -74,8 +87,31 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
             userDefaults.setObject(descriptionTextField.text, forKey: "Description")
             
             // Whatever the profile pic currently is displayed as, commit it to user defaults
-            userDefaults.setObject(UIImagePNGRepresentation(profileImageView.image!), forKey: "ProfilePic")
+            let profPicData = UIImagePNGRepresentation(profileImageView.image!)
             
+            userDefaults.setObject(profPicData, forKey: "ProfilePic")
+            
+            // Create a parse file object to save the image
+            let imageFile = PFFile.init(name: "ProfilePic.png", data: profPicData!)
+            
+            // TODO: Save all this data to the current Parse user so that others will be able to pull it!
+            
+            imageFile?.saveInBackgroundWithBlock({ (succeeded:Bool, error:NSError?) in
+                let currentUser = PFUser.currentUser()
+                
+                currentUser?.setObject(imageFile!, forKey: "ProfilePic")
+                currentUser?.setObject(self.nameTextField.text!, forKey: "Name")
+                currentUser?.setObject(self.descriptionTextField.text!, forKey: "Description")
+                
+                currentUser?.saveInBackground()
+            })
+            
+            var currentUser = PFUser.currentUser()
+            if currentUser != nil {
+                // save the data to the current user
+            } else {
+                // Show the login screen because there's no user
+            }
             // The home base should already be set, so we're good to go with dismissing the view. Display an alert view proclaiming success!
             
             let a = UIAlertController.init(title: "Success"  , message: "You successfully updated your deets", preferredStyle: .Alert)
@@ -85,6 +121,7 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
             
             let okAction = UIAlertAction(title: "Awesome!", style: UIAlertActionStyle.Default) {
                 UIAlertAction in
+                
                 
                 print("Dismissing deets view")
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -201,4 +238,44 @@ class EnterDeetsViewController: UIViewController, UIImagePickerControllerDelegat
     }
     */
 
+}
+
+extension EnterDeetsViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        print("Place Coordinates: ", place.coordinate)
+        
+        // This is where I set the user's home base coordinates in user defaults
+        NSUserDefaults.standardUserDefaults().setObject(place.coordinate.latitude, forKey: "HomeBaseLat")
+        NSUserDefaults.standardUserDefaults().setObject(place.coordinate.longitude, forKey: "HomeBaseLon")
+        
+        // TODO: Draw marker at and center around these coordinates on the map. I will call an update map pin function, and will need a homeBasePin GMSMarker property.
+        
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
 }

@@ -10,10 +10,12 @@ import Foundation
 import Contacts
 import UIKit
 import MessageUI
+import Parse
 
 struct Contact {
     let fullName : String
     let phoneNumber : String
+    var hasGLO : Bool
 }
 
 @available(iOS 9.0, *)
@@ -113,13 +115,19 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
                     
                     for numbers in contact.phoneNumbers {
                         //print("Here's the phone numbers label! ->", numbers.label)
-                        if (numbers.label == "_$!<Mobile>!$_") {
+                        print("Here's the mobile phone number label! ->", CNLabelPhoneNumberMobile)
+
+                        if (numbers.label == CNLabelPhoneNumberMobile) {
                             // get cell phone number if there is one
                             mobileNumber = (numbers.value as! CNPhoneNumber).valueForKey("digits") as! String
+                            
+                            
                         } else if (numbers.label == "_$!<Home>!$_") {
                             // get home phone number if there is one
                             homeNumber = (numbers.value as! CNPhoneNumber).valueForKey("digits") as! String
                         }
+                        // TODO: Consider adding another level of checking, such as work number
+                        
                     }
                     
                     // If mobile number is blank, add home number for "Phone Number" key instead
@@ -137,7 +145,7 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
                     let phoneNumber = contactNumber
                     
                     //Create Struct
-                    let newContact = Contact.init(fullName: fullName, phoneNumber: phoneNumber)
+                    var newContact = Contact.init(fullName: fullName, phoneNumber: phoneNumber, hasGLO: false)
                     
                     // Add this struct to the contact name and numbers field
                     self.contactsArray.append(newContact)
@@ -145,11 +153,54 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
                 
                 //print("Contacts Array:",self.contactsArray)
                 self.tableView.reloadData()
+                
+                // proceed to iterate through the contacts, searching the database to see if a user with the phone number exists.
+                
+                
             } else {
                 print ("aww man, no go on contacts")
             }
+            
+            self.checkContactsWithParse()
         }
     }
+    
+    
+    
+    func checkContactsWithParse() {
+        print("Checking contacts with Parse")
+        
+        for index in 0..<contactsArray.count {
+            var number = contactsArray[index].phoneNumber
+            
+            // Call a parse Query to see if the user exists; if so, set hasGLO = true.
+            var query = PFUser.query()
+            query!.whereKey("username", equalTo:contactsArray[index].phoneNumber)
+            
+            query?.getFirstObjectInBackgroundWithBlock({ (object:PFObject?, error:NSError?) in
+                
+                if (object != nil) {
+                    print("This user ", self.contactsArray[index].phoneNumber, " exists in parse!")
+                    self.contactsArray[index].hasGLO = true
+                    print("And here's proof! ", self.contactsArray[index].hasGLO)
+                    
+                    // This isn't actually updating the contact in the contact array though...I need to figure out a way to get the contact.hasGLO variable to actually update in the array
+                    
+                    self.tableView.reloadData()
+                } else {
+                    print("This user ", self.contactsArray[index].phoneNumber, " doesn't exist in Parse!")
+                    self.contactsArray[index].hasGLO = false
+                    self.tableView.reloadData()
+                }
+                
+            })
+            
+            
+        }
+        
+    }
+    
+    
     
     // MARK: TableView Protocol
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -167,6 +218,8 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
         let userImage = cell!.viewWithTag(3) as! UIImageView
         let inviteButton = cell!.viewWithTag(4) as! UIButton
         
+        
+        
         let contact: Contact
         
         if searchController.active && searchController.searchBar.text != "" {
@@ -175,11 +228,20 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
             contact = contactsArray[indexPath.row]
         }
         
+        print("Testing this out, contact.hasGLO = ", contact.hasGLO)
         
         fullNameLabel.text = contact.fullName
         phoneNumberLabel.text = contact.phoneNumber
         
-        inviteButton.addTarget(self, action: "inviteButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        if (contact.hasGLO == true) {
+            print("Setting button title as Add Friend")
+            inviteButton.addTarget(self, action: "sendFriendRequest:", forControlEvents: UIControlEvents.TouchUpInside)
+            inviteButton.setTitle("Add Friend", forState: UIControlState.Normal)
+        } else {
+            print("Setting button title as Invite To GLO")
+            inviteButton.addTarget(self, action: "sendSMSInvitePressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            inviteButton.setTitle("Invite to GLO", forState: UIControlState.Normal)
+        }
         
         return cell!
     }
@@ -258,7 +320,7 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
     
     func inviteButtonPressed(sender:AnyObject) {
         
-        
+        // TODO: Based on whether a user exists for this phone number yet, the app will either send an SMS or sent a friend request? Otherwise they can be different methods that get registered when I cycle through to see if the users exist in the database.
         print("inviteButtonPressed")
         let buttonPosition:CGPoint = sender.convertPoint(CGPointZero, toView:self.tableView)
         let indexPath = self.tableView.indexPathForRowAtPoint(buttonPosition)
@@ -316,6 +378,12 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
         self.presentViewController(messageController, animated: true, completion: nil)
         
     }
+    
+    
+    
+    
+    
+    
     
     func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
         switch result {

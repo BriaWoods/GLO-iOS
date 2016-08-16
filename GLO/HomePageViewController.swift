@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// TODO: Will need to add in "current Outing" button, that has a circular progress bar reflecting the time left until curfew (this will probably look pretty sweet).
 
 class HomePageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,8 +19,6 @@ class HomePageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var posseTableview: UITableView!
     
-    
-    let menuOptions = ["profile", ""]
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -49,7 +48,10 @@ class HomePageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         menuTableController.tableView.backgroundColor = UIColor.clearColor()
         menuTableController.tableView.scrollEnabled = false
-                
+        
+        
+        // TODO: Create the right bbi, have that push the "outing invites" view where the user can accept or deny the 
+        
         
         // UISideMenuNavigationController is a subclass of UINavigationController, so do any additional configuration of it here like setting its viewControllers.
         
@@ -87,10 +89,12 @@ class HomePageViewController: UIViewController, UITableViewDataSource, UITableVi
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         
-        if (!userDefaults.boolForKey("HasLaunchedOnce") ||
+        if (!userDefaults.boolForKey("HasLaunchedOnce")      ||
             userDefaults.stringForKey("Name") == nil         ||
-            userDefaults.stringForKey("Description") == nil   ||
-            userDefaults.objectForKey("ProfilePic") == nil
+            userDefaults.stringForKey("Description") == nil  ||
+            userDefaults.objectForKey("ProfilePic") == nil   ||
+            userDefaults.objectForKey("HomeBaseLat") == nil  ||
+            userDefaults.objectForKey("HomeBaseLon") == nil
             ) {
             
             // Launch the deets entry page

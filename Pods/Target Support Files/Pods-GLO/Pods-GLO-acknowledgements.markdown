@@ -68,7 +68,7 @@ You can get the attribution text by making a call to
 [GMSServices openSourceLicenseInfo].
 
 
-## GooglePlaces
+## GooglePlacesAPI
 
 The MIT License (MIT)
 

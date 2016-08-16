@@ -24,6 +24,16 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>GooglePlacesAPI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>GooglePlacesAutocomplete.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -67,6 +77,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0CC6E899C09F85AA810079C924251891</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>15C127F665430E1C04D671E2FD44CDFC</key>
 		<dict>
 			<key>primary</key>
@@ -82,6 +97,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>242A6CBA14E43D8E8565F18ADC5B0BD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
 		<dict>
 			<key>primary</key>
@@ -92,7 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4B5C693117EF5EA8EE985DBF9F5C8142</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C3BEFCD937F7A5FBDA8430EC2CDA52B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>68A1F5BC4CD1667FE1DB155DFCFBAAE2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7129FAB61478FA70223DADF4921468CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +162,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B671C260E8EF6E761A86AEE003FDD8D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BE7D15CFA792273E7ECC583CCFC68B0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>CABB3B4608FD2F88AF98DCC30226E7EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEA6D9860D1BF539619A73C3197DF76E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -163,6 +208,11 @@
 			<true/>
 		</dict>
 		<key>F8EE7BC0F9288D11C32AC61D83E72536</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFED1ECFDEEA3B23D3702441CC380208</key>
 		<dict>
 			<key>primary</key>
 			<true/>

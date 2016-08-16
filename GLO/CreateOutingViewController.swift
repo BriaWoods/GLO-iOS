@@ -37,6 +37,10 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     var postData:NSData? = NSData.init()
     
     
+    
+    // TODO: Will need to add in method to handle clicking the "Add member" button. This will pull all of the current user's friends from Parse, then display them in a table view and allow for selection which users you want to include on the outing.
+    
+    
     init() {
        super.init(nibName: nil, bundle: nil)
         print("init")
@@ -175,88 +179,11 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
                     }
                 }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
             // TODO: Consider moving this request to CliqueDataStore so other classes can call it.
             //Set postData as nil just in case it had some other value
             postData = nil
         
-            //TODO: Replace all this shenanigans with alamofire
-        
-        
-            // TODO: Below can be replaced with cliqueObject.
-        
-        /*
-        
-        let vars = NSMutableDictionary.init(dictionary: ["name":name, "destination":destination])
-        
-            
-            do {
-                postData = try NSJSONSerialization.dataWithJSONObject(vars, options: NSJSONWritingOptions(rawValue:0))
-            } catch {
-                print("Error with NSJSONSerialization in CliqueDataStore.getOneClique!")
-            }
-            var postLength = ""
-            if let postData = postData {
-                postLength = String("%lu", postData.length)
-            }
-            
-            // Next initialize the request
-            let request = NSMutableURLRequest.init()
-            request.URL = CFURLCreateWithString(nil, "https://pure-caverns-99011.herokuapp.com/createOuting", nil)
-            request.HTTPMethod = "POST"
-            request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-            request.HTTPBody = postData
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let returnArray:NSMutableArray = []
-            
-            // Execute the request
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
-                
-                guard error == nil && data != nil else {
-                    // check for fundamental networking error
-                    print("error=\(error)")
-                    return
-                }
-                
-                let requestReply = NSString.init(data: data!, encoding: NSASCIIStringEncoding)
-                print("postCreateOuting reply:", requestReply)
-                
-                do {
-                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSMutableDictionary
-                    print("postCreateOuting JSON response ->", json)
-                    
-                    // TODO: May want to include a dismiss block to handle the data beyond this
-                    //self.updateCliqueTrackArrayBlock() // updates CliqueSongID Array data
-                    /*
-                     dispatch_async(dispatch_get_main_queue(), {
-                     self.tableView.reloadData()
-                     self.viewDidLoad()
-                     })
-                     */
-                } catch {
-                    print("Something went wrong, better figure it out derp")
-                    //self.searchReturnName.removeAllObjects()
-                    //self.searchReturnID.removeAllObjects()
-                    dispatch_async(dispatch_get_main_queue(), {
-                        // self.tableView.reloadData()
-                    })
-                }
-            }
-            task.resume()
-        */
-        
-        
-        }
+    }
 
     
     func setupList() {

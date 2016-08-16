@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 import GoogleMaps
-import GooglePlaces
+import GooglePlacesAPI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Google Places Config
         GoogleMapsService.provideAPIKey("AIzaSyBY5PwOMXnsTKQifiyxLNJerny4R4MNDJg")
+        
+        // Google Places Confid
+        GooglePlaces.provideAPIKey("AIzaSyBY5PwOMXnsTKQifiyxLNJerny4R4MNDJg")
         
         
         // Parse Server Config

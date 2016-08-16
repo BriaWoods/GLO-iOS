@@ -43,7 +43,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-cp-xRa" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
-                    <rect key="frame" x="59" y="265" width="96" height="28"/>
+                    <rect key="frame" x="59" y="250" width="96" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="8NC-fU-39a"/>
                         <constraint firstAttribute="width" constant="96" id="9kv-PH-qSx"/>
@@ -63,7 +63,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co-Pilots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf4-8e-L2A" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
-                    <rect key="frame" x="219" y="265" width="96" height="28"/>
+                    <rect key="frame" x="219" y="250" width="96" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="GwL-Ng-RKO"/>
                         <constraint firstAttribute="width" constant="96" id="HvT-DD-k5g"/>
@@ -99,6 +99,9 @@
                     <state key="normal" title="Update Homebase">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tappedUpdateHomeBase:" destination="-1" eventType="touchUpInside" id="igs-E4-peu"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Homebase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE1-hV-uEB" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
                     <rect key="frame" x="71" y="296" width="232" height="38"/>
@@ -127,7 +130,7 @@
                 <constraint firstItem="RUu-af-SlD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="73" id="4yr-QX-DX3"/>
                 <constraint firstItem="RLz-M0-iF3" firstAttribute="centerX" secondItem="RUu-af-SlD" secondAttribute="centerX" id="5Ct-HQ-bLh"/>
                 <constraint firstItem="RUu-af-SlD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-80" id="8nV-Qa-ViT"/>
-                <constraint firstItem="vf4-8e-L2A" firstAttribute="top" secondItem="c3j-Us-V8h" secondAttribute="bottom" constant="8" id="Efc-uj-mtc"/>
+                <constraint firstItem="vf4-8e-L2A" firstAttribute="top" secondItem="c3j-Us-V8h" secondAttribute="bottom" constant="-7" id="Efc-uj-mtc"/>
                 <constraint firstItem="RLz-M0-iF3" firstAttribute="top" secondItem="RUu-af-SlD" secondAttribute="bottom" constant="-1" id="GnH-kX-hjP"/>
                 <constraint firstItem="vf4-8e-L2A" firstAttribute="centerX" secondItem="c3j-Us-V8h" secondAttribute="centerX" id="Qa7-fd-33n"/>
                 <constraint firstItem="Iek-lP-Eqw" firstAttribute="top" secondItem="IE1-hV-uEB" secondAttribute="bottom" constant="2" id="ThM-bb-Lde"/>
@@ -138,8 +141,8 @@
                 <constraint firstItem="Iek-lP-Eqw" firstAttribute="centerX" secondItem="IE1-hV-uEB" secondAttribute="centerX" id="i5G-Y5-v39"/>
                 <constraint firstItem="c3j-Us-V8h" firstAttribute="centerX" secondItem="B8B-1e-BBy" secondAttribute="centerX" id="jIi-fU-bnn"/>
                 <constraint firstItem="RUu-af-SlD" firstAttribute="top" secondItem="Xu5-xu-ymc" secondAttribute="bottom" constant="-67" id="jJx-3B-fPM"/>
-                <constraint firstItem="IE1-hV-uEB" firstAttribute="top" secondItem="vf4-8e-L2A" secondAttribute="bottom" constant="3" id="lMX-vX-WTW"/>
-                <constraint firstItem="JdH-cp-xRa" firstAttribute="top" secondItem="RLz-M0-iF3" secondAttribute="bottom" constant="8" id="m8b-oQ-gEd"/>
+                <constraint firstItem="IE1-hV-uEB" firstAttribute="top" secondItem="vf4-8e-L2A" secondAttribute="bottom" constant="18" id="lMX-vX-WTW"/>
+                <constraint firstItem="JdH-cp-xRa" firstAttribute="top" secondItem="RLz-M0-iF3" secondAttribute="bottom" constant="-7" id="m8b-oQ-gEd"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

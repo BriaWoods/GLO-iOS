@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SideMenuTableController: UITableViewController {
 
@@ -58,6 +59,10 @@ class SideMenuTableController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Customize what happens when each option is pressed (push corresponding views)
+        
+        // TODO: Add an option for logging the user out when they click "Logout"
+        // TODO: Add in a friend Request view so that users can accept/deny friend requests; this will be processed on the backend by a cloud function that will create a relation between the current Parse user and the selected user.
+        
         print("Tapped ", menuOptions[indexPath.row])
         if (indexPath.row == 0) {
             let pvc = ProfileViewController()
@@ -65,8 +70,13 @@ class SideMenuTableController: UITableViewController {
         } else if (indexPath.row == 2) {
             let ctvc = ContactTableViewController()
             self.navigationController?.pushViewController(ctvc, animated: true)
+        } else if (indexPath.row == 3) {
+            print("Proceeding to log out the user")
+            // Logout current User then present the login storyboard.
+            PFUser.logOut()
+            let storyboard = UIStoryboard.init(name: "PhoneLogin", bundle: nil)
+            self.presentViewController(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
         }
-        
     }
     
 
