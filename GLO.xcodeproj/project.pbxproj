@@ -51,6 +51,9 @@
 		E22B5E291D619645006B264F /* EnterDeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E271D619644006B264F /* EnterDeetsViewController.swift */; };
 		E22B5E2A1D619645006B264F /* EnterDeetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22B5E281D619644006B264F /* EnterDeetsViewController.xib */; };
 		E22B5E2C1D62F178006B264F /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */; };
+		E22B5E331D663BAF006B264F /* GLODataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E321D663BAF006B264F /* GLODataStore.swift */; };
+		E22B5E351D6641B5006B264F /* OutingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E341D6641B5006B264F /* OutingObject.swift */; };
+		E22B5E381D667DC2006B264F /* GLODataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E22B5E361D667DC2006B264F /* GLODataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +127,9 @@
 		E22B5E271D619644006B264F /* EnterDeetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterDeetsViewController.swift; sourceTree = "<group>"; };
 		E22B5E281D619644006B264F /* EnterDeetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterDeetsViewController.xib; sourceTree = "<group>"; };
 		E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		E22B5E321D663BAF006B264F /* GLODataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLODataStore.swift; sourceTree = "<group>"; };
+		E22B5E341D6641B5006B264F /* OutingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutingObject.swift; sourceTree = "<group>"; };
+		E22B5E371D667DC2006B264F /* GLODataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GLODataModel.xcdatamodel; sourceTree = "<group>"; };
 		E89FA7F73D9CB9CB70BAF800 /* Pods-GLOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLOUITests/Pods-GLOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EA98D2B257492F402F839C2B /* Pods-GLO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLO.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLO/Pods-GLO.release.xcconfig"; sourceTree = "<group>"; };
 		F02A22EFA54D5400CDA69F4A /* Pods_GLOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GLOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +224,9 @@
 			children = (
 				E204E8E21D5BDA9C006CF631 /* SideMenu */,
 				E213CB471D318C8600BFCF3E /* AppDelegate.swift */,
+				E22B5E321D663BAF006B264F /* GLODataStore.swift */,
+				E22B5E361D667DC2006B264F /* GLODataModel.xcdatamodeld */,
+				E22B5E341D6641B5006B264F /* OutingObject.swift */,
 				E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */,
 				E22B5E2B1D62F178006B264F /* KDCircularProgress.swift */,
 				6DF37A5B1D322A29001CB513 /* ContactsTableViewCell.swift */,
@@ -550,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22B5E351D6641B5006B264F /* OutingObject.swift in Sources */,
 				E204E8E81D5BDB0B006CF631 /* SideMenuTransition.swift in Sources */,
 				E22B5E291D619645006B264F /* EnterDeetsViewController.swift in Sources */,
 				6DF37A5D1D322A29001CB513 /* ContactsTableViewCell.swift in Sources */,
@@ -560,8 +570,10 @@
 				E204E8F31D5CFDD8006CF631 /* ContactTableViewCell.swift in Sources */,
 				E204E8E71D5BDB0B006CF631 /* SideMenuManager.swift in Sources */,
 				E213CBC81D31EC5E00BFCF3E /* SignUpController.swift in Sources */,
+				E22B5E331D663BAF006B264F /* GLODataStore.swift in Sources */,
 				E204E8EC1D5BE91B006CF631 /* SideMenuTableController.swift in Sources */,
 				E213CBCA1D322F6C00BFCF3E /* CreateOutingViewController.swift in Sources */,
+				E22B5E381D667DC2006B264F /* GLODataModel.xcdatamodeld in Sources */,
 				E204E8F81D5D2C00006CF631 /* ShadowLabel.swift in Sources */,
 				E213CBC11D31DAB800BFCF3E /* OutingViewController.swift in Sources */,
 				6DF37A511D31EC0E001CB513 /* PosseNameViewController.swift in Sources */,
@@ -816,6 +828,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E22B5E361D667DC2006B264F /* GLODataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E22B5E371D667DC2006B264F /* GLODataModel.xcdatamodel */,
+			);
+			currentVersion = E22B5E371D667DC2006B264F /* GLODataModel.xcdatamodel */;
+			path = GLODataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E213CB3C1D318C8400BFCF3E /* Project object */;
 }

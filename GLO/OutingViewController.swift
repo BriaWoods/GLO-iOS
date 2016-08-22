@@ -19,10 +19,18 @@ class OutingViewController:UIViewController {
     // Wu Tang Demo View
     let members = WuTang.all()
     
+    // Outing object will contain all the outing's vital data
+    var outing:OutingObject?
+    
+    var viewHasLoaded = false
     
     // Member Array which will hold their location, name, an image for the outing and their marker, and their current status (safe, uncomfortable, or emergency)
     var memberDict:[String:Member] = [:]
     
+   
+   
+    @IBOutlet weak var outingNameLabel: UILabel!
+    @IBOutlet weak var curfewTimerLabel: UILabel!
     
     
     ////// Testing out Socket.io
@@ -35,13 +43,20 @@ class OutingViewController:UIViewController {
     @IBOutlet weak var uncomfortableButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
     
+    
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         print("In init for home page controller")
+        viewHasLoaded = false
     }
-    
+    /*
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
+    }
+ */
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     
@@ -53,7 +68,7 @@ class OutingViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View did load homebase")
+        print("View did load OutingViewController")
         
         addHandlers()
         socket.connect()
@@ -80,12 +95,15 @@ class OutingViewController:UIViewController {
         
         //TODO: This lat and lng data should pull from the backend so that all users get the same data
         
-        let lat = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLat") as! Double
-        let lng = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLng") as! Double
+        //let lat = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLat") as! Double
+        //let lng = NSUserDefaults.standardUserDefaults().objectForKey("currentOutingLng") as! Double
         
-        print("CURRENT OUTING LAT: ", lat, " AND LNG: ", lng)
+        let lat = outing?.destinationLat
+        let lon = outing?.destinationLon
         
-        let camera = GMSCameraPosition.cameraWithLatitude(lat, longitude: lng, zoom: 3.0)
+        print("CURRENT OUTING LAT: ", lat, " AND LNG: ", lon)
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(Double(lat!), longitude: Double(lon!), zoom: 3.0)
         self.mapView.camera = camera
         //mapView = GMSMapView.mapWithFrame(CGRect.zero, camera: camera)
         mapView.myLocationEnabled = true
@@ -93,12 +111,15 @@ class OutingViewController:UIViewController {
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        marker.position = CLLocationCoordinate2D(latitude: Double(lat!), longitude: Double(lon!))
         marker.title = "Outing Destination"
         marker.snippet = "Party Time"
         marker.map = mapView
         
         
+        // TODO: This is where I pull the memberSocketList and reload the whole view based on who's already a member
+        
+        viewHasLoaded = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -109,12 +130,41 @@ class OutingViewController:UIViewController {
             setupList()
         }
         
+        // Set the title label
+        outingNameLabel.text = outing?.name
+        
+        
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
         
         // Disconnect from the socket when the view will disappear (in the final version, you actually will never disconnect from the event until the event is concluded
-        socket.disconnect()
+        //socket.disconnect()
+    }
+    
+    
+    deinit {
+        print("OVC Deallocating and socket disconnecting")
+        //socket.disconnect()
+    }
+    
+    
+    func updateTimerLabel() {
+        print("updating Timer Label")
+        
+        let curfewDate = NSDate(timeIntervalSinceReferenceDate: outing!.curfew)
+        let timeUntilCurfew = curfewDate.timeIntervalSinceNow
+        
+        let hours = Int(timeUntilCurfew) / 3600
+        print("Hours: ", hours)
+        let minutes = (Int(timeUntilCurfew) % 3600) / 60
+        print("Minutes: ", minutes)
+        let seconds = ((Int(timeUntilCurfew) % 3600) % 60)
+        print("Seconds: ", seconds)
+        
+        curfewTimerLabel.text = String.localizedStringWithFormat("%.2d:%.2d:%.2d", hours, minutes, seconds)
+
     }
     
     
@@ -148,7 +198,6 @@ class OutingViewController:UIViewController {
         updatingMember!.location = CLLocationCoordinate2D.init(latitude: lat, longitude: lon)
         
     }
-    
 
     
     func addHandlers() {
@@ -174,6 +223,46 @@ class OutingViewController:UIViewController {
             
             self.socket.emit("newUser", currentUser!.username!, "The Chef", "ShimmyShimmyYa")
             
+            // TODO: After connecting, save userData to the SocketMemberList
+                    // SocketMemberList will be used for creating/recreating all of the members when the OVC loads/reloads
+            
+            // Pull the parse Outing object, then append my userData onto the socketMemberList
+            
+            var query = PFQuery(className:"Outing")
+            query.getObjectInBackgroundWithId((self.outing?.outingID)!) {
+                (currentOuting: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let currentOuting = currentOuting {
+                    
+                    // On successful query, update add the user to the socketMemberList
+                    let userParams:[String:String] = [
+                        "name":NSUserDefaults.standardUserDefaults().objectForKey("Name") as! String,
+                        "userID":(self.outing?.outingCreator)!,
+                        "description":NSUserDefaults.standardUserDefaults().objectForKey("Description") as! String
+                    ]
+                    
+                    // Get the currentSocketMemberList and save it in a var
+                    var updatedSocketMemberList = currentOuting["socketMemberList"] as! [[String:String]]
+                    // Append the new User to the socket member list
+                    updatedSocketMemberList.append(userParams)
+                    // Set the current outings socketMemberList as to be the updatedSocketMemberList
+                    currentOuting["socketMemberList"] = updatedSocketMemberList
+                    
+                    // Save the outing object in background
+                    currentOuting.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            // The object has been saved.
+                            print("Successfully update the socketMemberList!")
+                        } else {
+                            // There was a problem, check error.description
+                            print("Error updating the socket member list: ", error?.description)
+                            
+                        }
+                    }
+                }
+            }
         }
         
         /*
@@ -235,7 +324,7 @@ class OutingViewController:UIViewController {
             imageView.tag = i
             imageView.contentMode = .ScaleAspectFill
             imageView.userInteractionEnabled = true
-            imageView.layer.cornerRadius = 20.0
+            imageView.layer.cornerRadius = memberScrollView.frame.height / 2 //20.0
             imageView.layer.masksToBounds = true
             memberScrollView.addSubview(imageView)
             
@@ -253,9 +342,9 @@ class OutingViewController:UIViewController {
         let ratio = view.frame.size.height / view.frame.size.width
         print("ratio:", ratio)
         let itemHeight: CGFloat = memberScrollView.frame.height * 1.0
-        let itemWidth: CGFloat = itemHeight / ratio
+        let itemWidth: CGFloat = itemHeight //  / ratio
         
-        let horizontalPadding: CGFloat = 10.0
+        let horizontalPadding: CGFloat = 5.0
         memberScrollView.contentSize = CGSize(
             width: CGFloat(members.count) * (itemWidth + horizontalPadding) + horizontalPadding,
             height:  0)
@@ -283,14 +372,14 @@ class OutingViewController:UIViewController {
 
 struct Member {
     
-    var clientID = ""
-    var name = ""
-    var description = "Chef in the kitchen cookin' up with the crimeys"
+    var clientID = "" // Should encode this
+    var name = "" // and this
+    var description = "Chef in the kitchen cookin' up with the crimeys" // and this
     
-    var userImage = UIImage(named: "Raekwon")?.markerPinMode
+    var userImage = UIImage(named: "Raekwon")?.markerPinMode // and this
     
-    var marker:GMSMarker?
-    var currentMapView:GMSMapView
+    var marker:GMSMarker? // Can initialize this upon reloading
+    var currentMapView:GMSMapView // Can initialize this upon reloading
     
     var location:CLLocationCoordinate2D? = nil {
         didSet {
@@ -309,8 +398,6 @@ struct Member {
                     marker!.icon = userImage
                     marker!.map = currentMapView
                 }
-                
-                
             }
         }
     }
@@ -319,6 +406,8 @@ struct Member {
         // When initializing the Member, a map should be provided so that it is known where to draw their location marker
         currentMapView = mapView
     }
+    
+    // TODO: Add a method here that adds this member to the backend
 }
 
 // Extending UIImage to allow for setting a marker pin-sized image from the original image used

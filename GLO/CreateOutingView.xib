@@ -14,7 +14,6 @@
                 <outlet property="curfewLabel" destination="zGw-2p-BsE" id="zHC-dD-wnr"/>
                 <outlet property="curfewTimePicker" destination="hi0-e0-ZzV" id="u9W-mZ-gh9"/>
                 <outlet property="destinationLabel" destination="wOP-um-to1" id="o28-IW-kzo"/>
-                <outlet property="destinationTextField" destination="EJd-hY-3Zv" id="0yi-ap-hSr"/>
                 <outlet property="mapView" destination="9C2-bh-LzC" id="dGA-vS-ZP3"/>
                 <outlet property="memberScrollView" destination="C60-2m-5bv" id="HLD-JH-eq2"/>
                 <outlet property="outingNameTextField" destination="vat-cV-5nJ" id="5JZ-s6-Ccz"/>
@@ -76,15 +75,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address or Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJd-hY-3Zv">
-                    <rect key="frame" x="23" y="252" width="329" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="btZ-Na-Oin"/>
-                        <constraint firstAttribute="width" constant="329" id="rMC-8u-PN2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hi0-e0-ZzV">
                     <rect key="frame" x="0.0" y="525" width="375" height="93"/>
                     <constraints>
@@ -136,29 +126,42 @@
                         <constraint firstAttribute="width" constant="329" id="SrK-gd-8xF"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lld-JS-Rp8">
+                    <rect key="frame" x="122" y="258" width="130" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="l42-6V-V36"/>
+                        <constraint firstAttribute="width" constant="130" id="rsn-MJ-MrN"/>
+                    </constraints>
+                    <state key="normal" title="Set Destination">
+                        <color key="titleColor" red="1" green="0.9530383469" blue="0.95282105319999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedUpdateHomeBase:" destination="-1" eventType="touchUpInside" id="hDB-D5-VNV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="auC-7p-X0a" firstAttribute="top" secondItem="vat-cV-5nJ" secondAttribute="bottom" constant="11" id="0VN-cz-ITA"/>
                 <constraint firstItem="auC-7p-X0a" firstAttribute="centerX" secondItem="vat-cV-5nJ" secondAttribute="centerX" id="1TD-6F-SXz"/>
+                <constraint firstItem="9C2-bh-LzC" firstAttribute="centerX" secondItem="Lld-JS-Rp8" secondAttribute="centerX" id="2wi-Vl-xCQ"/>
                 <constraint firstItem="vat-cV-5nJ" firstAttribute="top" secondItem="vDm-Ub-OG1" secondAttribute="bottom" constant="6" id="98f-fZ-amp"/>
                 <constraint firstItem="vat-cV-5nJ" firstAttribute="centerX" secondItem="vDm-Ub-OG1" secondAttribute="centerX" id="9wE-Ew-EXG"/>
                 <constraint firstItem="VOT-nv-sRt" firstAttribute="leading" secondItem="auC-7p-X0a" secondAttribute="trailing" constant="-56" id="Bt3-5c-Mlr"/>
                 <constraint firstItem="E8c-R5-nHg" firstAttribute="top" secondItem="hi0-e0-ZzV" secondAttribute="bottom" constant="9" id="Dgy-EO-Kjm"/>
                 <constraint firstItem="E8c-R5-nHg" firstAttribute="centerX" secondItem="hi0-e0-ZzV" secondAttribute="centerX" id="Fjz-Xs-AbW"/>
                 <constraint firstItem="hi0-e0-ZzV" firstAttribute="top" secondItem="zGw-2p-BsE" secondAttribute="bottom" constant="-2" id="HGP-10-jD0"/>
-                <constraint firstItem="9C2-bh-LzC" firstAttribute="top" secondItem="EJd-hY-3Zv" secondAttribute="bottom" constant="14" id="KWd-hp-t3h"/>
+                <constraint firstItem="Lld-JS-Rp8" firstAttribute="centerX" secondItem="wOP-um-to1" secondAttribute="centerX" id="Mop-2S-Xpb"/>
                 <constraint firstItem="wOP-um-to1" firstAttribute="top" secondItem="C60-2m-5bv" secondAttribute="bottom" constant="1" id="RAZ-p8-B04"/>
-                <constraint firstItem="EJd-hY-3Zv" firstAttribute="centerX" secondItem="wOP-um-to1" secondAttribute="centerX" id="UE7-Sj-Jgd"/>
                 <constraint firstItem="vDm-Ub-OG1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="23" id="ZmA-KB-DJO"/>
                 <constraint firstItem="zGw-2p-BsE" firstAttribute="top" secondItem="9C2-bh-LzC" secondAttribute="bottom" constant="8" id="apA-GU-8Ll"/>
+                <constraint firstItem="9C2-bh-LzC" firstAttribute="top" secondItem="Lld-JS-Rp8" secondAttribute="bottom" constant="8" id="bfP-Hq-USU"/>
                 <constraint firstItem="VOT-nv-sRt" firstAttribute="centerY" secondItem="auC-7p-X0a" secondAttribute="centerY" constant="-2" id="cAH-IQ-9aS"/>
-                <constraint firstItem="9C2-bh-LzC" firstAttribute="centerX" secondItem="EJd-hY-3Zv" secondAttribute="centerX" id="f6S-KF-S22"/>
                 <constraint firstItem="zGw-2p-BsE" firstAttribute="centerX" secondItem="9C2-bh-LzC" secondAttribute="centerX" id="g4r-8S-8i4"/>
-                <constraint firstItem="EJd-hY-3Zv" firstAttribute="top" secondItem="wOP-um-to1" secondAttribute="bottom" constant="1" id="is9-jk-Vj0"/>
                 <constraint firstItem="vDm-Ub-OG1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mMr-fS-inM"/>
                 <constraint firstItem="wOP-um-to1" firstAttribute="centerX" secondItem="C60-2m-5bv" secondAttribute="centerX" id="pNV-cD-I6E"/>
                 <constraint firstItem="C60-2m-5bv" firstAttribute="top" secondItem="auC-7p-X0a" secondAttribute="bottom" constant="-2" id="rcs-Us-xVc"/>
+                <constraint firstItem="Lld-JS-Rp8" firstAttribute="top" secondItem="wOP-um-to1" secondAttribute="bottom" constant="7" id="wuV-BK-edf"/>
                 <constraint firstItem="C60-2m-5bv" firstAttribute="centerX" secondItem="auC-7p-X0a" secondAttribute="centerX" id="xt0-dB-H0G"/>
                 <constraint firstItem="hi0-e0-ZzV" firstAttribute="centerX" secondItem="zGw-2p-BsE" secondAttribute="centerX" id="yKm-4J-Huf"/>
             </constraints>

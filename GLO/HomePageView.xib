@@ -3,12 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomePageViewController" customModule="GLO" customModuleProvider="target">
             <connections>
                 <outlet property="currentOuting" destination="54u-CA-zrh" id="wkJ-n1-CKD"/>
+                <outlet property="outingScrollView" destination="Kun-Lf-V0L" id="1nj-iT-lc1"/>
                 <outlet property="posseTableview" destination="Ag2-xU-cGS" id="EXl-da-aUQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yas-HV-qp4"/>
             </connections>
@@ -111,7 +111,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54u-CA-zrh">
-                    <rect key="frame" x="136" y="330" width="102" height="30"/>
+                    <rect key="frame" x="137" y="370" width="102" height="30"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="KkC-TP-znX"/>
@@ -131,70 +131,32 @@
                         <action selector="presentCurrentVC:" destination="-1" eventType="touchUpInside" id="jbl-W6-P0o"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXa-85-5xY" customClass="KDCircularProgress" customModule="GLO" customModuleProvider="target">
-                    <rect key="frame" x="102" y="166" width="170" height="170"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:22:14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPU-WP-Rs7" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
-                            <rect key="frame" x="25" y="69" width="119" height="34"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
-                            <color key="textColor" red="1" green="0.9530383469" blue="0.95282105319999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kun-Lf-V0L">
+                    <rect key="frame" x="0.0" y="166" width="375" height="207"/>
                     <constraints>
-                        <constraint firstItem="LPU-WP-Rs7" firstAttribute="centerX" secondItem="vXa-85-5xY" secondAttribute="centerX" id="0pQ-u5-Uv5"/>
-                        <constraint firstAttribute="width" constant="170" id="5Ub-Kt-nPC"/>
-                        <constraint firstItem="LPU-WP-Rs7" firstAttribute="width" secondItem="vXa-85-5xY" secondAttribute="height" multiplier="110:171" constant="9.6432748538011737" id="HBG-bb-tFJ"/>
-                        <constraint firstItem="LPU-WP-Rs7" firstAttribute="centerY" secondItem="vXa-85-5xY" secondAttribute="centerY" constant="1" id="QVK-Wl-XGI"/>
-                        <constraint firstAttribute="height" constant="170" id="u9g-Xj-Lps"/>
+                        <constraint firstAttribute="height" constant="207" id="kPM-rf-wJh"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                            <color key="value" red="0.05753051460464409" green="1" blue="0.43581903305798919" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor2">
-                            <color key="value" red="0.055592870971817421" green="1" blue="0.89608530413567911" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor3">
-                            <color key="value" red="0.72672579414397953" green="1" blue="0.025387861094360087" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                            <real key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                            <real key="value" value="0.14999999999999999"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                            <real key="value" value="360"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                            <real key="value" value="270"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
-                            <real key="value" value="0.125"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="vXa-85-5xY" firstAttribute="top" secondItem="dfn-At-Wsa" secondAttribute="bottom" constant="8" id="0bM-ZX-ofo"/>
                 <constraint firstItem="dfn-At-Wsa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Xq-3z-uPl"/>
-                <constraint firstItem="54u-CA-zrh" firstAttribute="top" secondItem="vXa-85-5xY" secondAttribute="bottom" constant="-6" id="3Hf-GI-v4A"/>
                 <constraint firstItem="aMW-0e-Jib" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7Rm-Nq-lE0"/>
+                <constraint firstItem="54u-CA-zrh" firstAttribute="centerX" secondItem="Kun-Lf-V0L" secondAttribute="centerX" id="87m-qX-5Bg"/>
+                <constraint firstItem="Kun-Lf-V0L" firstAttribute="centerX" secondItem="dfn-At-Wsa" secondAttribute="centerX" id="AHA-j4-UOP"/>
                 <constraint firstAttribute="bottom" secondItem="Ag2-xU-cGS" secondAttribute="bottom" constant="15" id="JWR-sR-dIj"/>
                 <constraint firstItem="dfn-At-Wsa" firstAttribute="top" secondItem="aMW-0e-Jib" secondAttribute="bottom" constant="14" id="PRi-DP-HtE"/>
                 <constraint firstItem="Ag2-xU-cGS" firstAttribute="top" secondItem="wjW-ss-Boo" secondAttribute="bottom" constant="8" id="Pn8-7I-k8Z"/>
                 <constraint firstAttribute="trailing" secondItem="wjW-ss-Boo" secondAttribute="trailing" id="XIo-TX-uWT"/>
-                <constraint firstItem="54u-CA-zrh" firstAttribute="centerX" secondItem="vXa-85-5xY" secondAttribute="centerX" id="XVz-r5-o0N"/>
                 <constraint firstItem="wjW-ss-Boo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aBX-KC-4pH"/>
+                <constraint firstItem="54u-CA-zrh" firstAttribute="top" secondItem="Kun-Lf-V0L" secondAttribute="bottom" constant="-3" id="bUz-EC-6D4"/>
                 <constraint firstAttribute="trailing" secondItem="Ag2-xU-cGS" secondAttribute="trailing" id="bwd-Sp-Rv5"/>
-                <constraint firstItem="wjW-ss-Boo" firstAttribute="top" secondItem="54u-CA-zrh" secondAttribute="bottom" constant="21" id="fxe-Jq-np7"/>
+                <constraint firstItem="wjW-ss-Boo" firstAttribute="top" secondItem="54u-CA-zrh" secondAttribute="bottom" constant="-19" id="fxe-Jq-np7"/>
+                <constraint firstItem="Kun-Lf-V0L" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="hbm-ah-oRl"/>
                 <constraint firstAttribute="trailing" secondItem="dfn-At-Wsa" secondAttribute="trailing" id="lUh-Pw-Z2u"/>
                 <constraint firstItem="aMW-0e-Jib" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="68" id="mcr-65-c01"/>
-                <constraint firstItem="vXa-85-5xY" firstAttribute="centerX" secondItem="dfn-At-Wsa" secondAttribute="centerX" id="nHP-us-Nhf"/>
                 <constraint firstItem="Ag2-xU-cGS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="otW-Ot-0E8"/>
+                <constraint firstItem="Kun-Lf-V0L" firstAttribute="top" secondItem="dfn-At-Wsa" secondAttribute="bottom" constant="8" id="qus-o6-6kT"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

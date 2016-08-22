@@ -336,6 +336,9 @@ class PhoneLoginController: UIViewController {
                     
                     print("Success! You were successfully logged in to the glo!")
                     
+                    let userID = PFUser.currentUser()?.username
+                    NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "userID")
+                    
                     let a = UIAlertController.init(title: "You're in!"  , message: "Login was successful. Welcome to GLO.", preferredStyle: .Alert)
                     
                     //a.view.backgroundColor = UIColor.blackColor()

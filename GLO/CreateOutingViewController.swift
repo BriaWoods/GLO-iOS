@@ -11,15 +11,24 @@ import UIKit
 import QuartzCore
 import GoogleMaps
 import Alamofire
+import Parse
+
 
 class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFieldDelegate {
     
     let members = WuTang.all()
     
+    var homeBaseMarker:GMSMarker?
+    var didSetDestination = false
+    
+    // Need a pointer to the HomePageViewController instance, so that I can add this newly created outing to the HPVC's outing array
+    var hpvc:HomePageViewController?
+    var newOuting:OutingObject = GLODataStore.sharedInstance.createOuting()
+    
     @IBOutlet var outingNameTextField: UITextField!
     @IBOutlet var addMemberButton: UIButton!
     @IBOutlet var memberScrollView: UIScrollView!
-    @IBOutlet var destinationTextField: UITextField!
+    //@IBOutlet var destinationTextField: UITextField!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet var curfewTimePicker: UIDatePicker!
     @IBOutlet var createOutingButton: UIButton!
@@ -30,7 +39,6 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     @IBOutlet weak var curfewLabel: ShadowLabel!
     
     var titleLabelArray:[UILabel] = []
-    
     
     var dismissBlock:(() -> Void)! = {}
     
@@ -44,6 +52,7 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     init() {
        super.init(nibName: nil, bundle: nil)
         print("init")
+        
     }
     
     
@@ -71,7 +80,7 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
         curfewTimePicker.sendAction("setHighlightsToday:", to: nil, forEvent: nil)
         
         outingNameTextField.delegate = self
-        destinationTextField.delegate = self
+        //destinationTextField.delegate = self
         
         
         
@@ -123,11 +132,38 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
         
     }
     
+    func setHomeBaseMarker() {
+        // Remove current marker before initializing a new one
+        
+        homeBaseMarker?.map = nil
+        
+        let homeBaseLat = Double(newOuting.destinationLat)
+        let homeBaseLon = Double(newOuting.destinationLon)
+        
+        homeBaseMarker = GMSMarker.init(position: CLLocationCoordinate2D(latitude: homeBaseLat, longitude: homeBaseLon))
+        homeBaseMarker?.map = mapView
+        
+        
+        // Center the Map View around the newly drawn marker
+        let camera = GMSCameraPosition.cameraWithLatitude(homeBaseLat, longitude: homeBaseLon, zoom: 3.0)
+        mapView.camera = camera
+        mapView.myLocationEnabled = true
+        
+    }
+    
+    @IBAction func tappedUpdateHomeBase(sender: AnyObject) {
+        print("called tappedSetHomeBase")
+        
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
+    }
+    
     @IBAction func createOutingButtonPressed(sender: AnyObject) {
         
-        if ((destinationTextField.text == "") || (outingNameTextField.text == "")) {
+        if ((outingNameTextField.text == "") || (didSetDestination == false)) {
             
-            let a = UIAlertController.init(title: "Add a name and destination please!" , message: "What's a party without a venue, and what's an outing without a name? Go on, fill out the deets please.", preferredStyle: .Alert)
+            let a = UIAlertController.init(title: "Missing Some Info" , message: "Add a name and set your destination please!", preferredStyle: .Alert)
             
             //a.view.backgroundColor = UIColor.blackColor()
             //a.view.tintColor = UIColor.blueColor()
@@ -142,21 +178,102 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
             self.presentViewController(a, animated: true, completion: nil)
             
         } else {
-            // TODO: This is where the API hit will get called to POST the data (destination for now)
-            postOuting(outingNameTextField.text!, destination: destinationTextField.text!)
+            
+            // TODO: Create the outing object, initialize all of the data, then
+            //       pass that outing to an OutingViewController, then add that
+            //       OVC to the hpvc's OutingViewArray
+            
+            let curfewDate = curfewTimePicker.date.timeIntervalSinceReferenceDate
+            let curfewTimeInterval = curfewTimePicker.date.timeIntervalSinceNow
+            
+            let newOuting = GLODataStore.sharedInstance.createOuting()
+            
+            newOuting.name = outingNameTextField.text!
+            newOuting.outingCreator = NSUserDefaults.standardUserDefaults().objectForKey("userID") as! String
+            newOuting.curfew = curfewDate
+            newOuting.curfewTimeInterval = curfewTimeInterval
+            
+            // Initialize a new OutingViewController and set its outing property
+            let newOVC = OutingViewController.init()
+            newOVC.outing = newOuting
+            
+            print("NEW OUTING CHECK 2 LAT: ", newOuting.destinationLat, " AND LON: ", newOuting.destinationLon)
+            
+            // Add the newOVC to the hpvc's outingViewArray and currentOutingArray
+            hpvc!.currentOutingArray.append(newOuting)
+            hpvc!.outingViewArray.append(newOVC)
+            
+            
+            postOuting(outingNameTextField.text!,
+                       outingID: newOuting.outingID,
+                       creator: newOuting.outingCreator,
+                       dateCreated: newOuting.dateCreated,
+                       destinationLat: Double(newOuting.destinationLat),
+                       destinationLon: Double(newOuting.destinationLon),
+                       curfewDate: curfewDate,
+                       curfewTimeInterval:newOuting.curfewTimeInterval)
+            
+            // Consider moving the dismiss command to the success block in postOuting
             self.dismissViewControllerAnimated(true, completion: dismissBlock)
         }
     }
     
-    func postOuting(name:String, destination:String) {
+    func postOuting(name:String, outingID:String, creator:String, dateCreated:Double, destinationLat:Double, destinationLon:Double, curfewDate:Double, curfewTimeInterval:Double) {
         
         let parameters = [
-            "name":name,
-            "destination":destination,
-            "turd": "ferguson"
+            "name": name,
+            "outingID": outingID,
+            "creator": creator,
+            "dateCreated": dateCreated,
+            "destinationLat": destinationLat,
+            "destinationLon": destinationLon,
+            "turd": "ferguson",
+            "curfewDate": curfewDate,
+            "curfewTimeInterval": curfewTimeInterval,
+            "ACL": [creator]
         ]
         
-        Alamofire.request(.POST, "https://glo-app.herokuapp.com/createOuting", parameters: parameters, encoding: .JSON)
+        let userParams:[String:AnyObject] = [
+            "name":name,
+            "userID":creator,
+            "description":NSUserDefaults.standardUserDefaults().objectForKey("Description") as! String
+        ]
+        
+        
+        var newOuting = PFObject(className:"Outing")
+        newOuting["name"] = name
+        newOuting["outingID"] = outingID
+        newOuting["creator"] = creator
+        newOuting["dateCreated"] = dateCreated
+        newOuting["destinationLat"] = destinationLat
+        newOuting["destinationLon"] = destinationLon
+        newOuting["turd"] = "ferguson"
+        newOuting["curfewDate"] = curfewDate
+        newOuting["curfewTimeInterval"] = curfewTimeInterval
+        newOuting["socketMemberList"] = [] // init a blank socketMemberList to be populated later
+        
+        var outingACL = PFACL.init(user: PFUser.currentUser()!)
+        newOuting.ACL = outingACL
+        
+        newOuting.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+                print("Parse outing saved successfully!")
+            } else {
+                // There was a problem, check error.description
+                print("Error creating the parse outing! ", error?.description)
+                
+            }
+        }
+        
+        
+        
+        // TODO: This needs to be replaced with creating a parse Object, then setting the ACL
+        
+        /* Going to try creating outing as Parse Object instead so that it has a built in ACL (for security)
+         
+        Alamofire.request(.POST, "https://glo-app.herokuapp.com/createOuting", parameters: parameters as? [String : AnyObject], encoding: .JSON)
                 .responseJSON { response in
                     print("here's the request", response.request)  // original URL request
                     print("here's the URL Response", response.response) // URL response
@@ -178,10 +295,8 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
                         print("Failure posting outing!")
                     }
                 }
+        */
         
-            // TODO: Consider moving this request to CliqueDataStore so other classes can call it.
-            //Set postData as nil just in case it had some other value
-            postData = nil
         
     }
 
@@ -227,7 +342,6 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
                 width: itemWidth, height: itemHeight)
             print(i, imageView.frame)
         }
-        
     }
     
     func didTapImageView(sender: AnyObject) {
@@ -244,10 +358,6 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-    
-
-    
 }
 
 
@@ -280,4 +390,60 @@ struct WuTang {
             WuTang(name: "Masta Killa", image: "MastaKilla.jpg", description:"Jamel Irief (born Elgin Turner; August 18, 1969), better known by his stage name Masta Killa, is an American rapper and member of the Wu-Tang Clan.[2] Though one of the lesser-known members of the group (he was featured on only one track on their 1993 debut album Enter the Wu-Tang (36 Chambers)), he has been prolific on Clan group albums and solo projects since the mid-1990s. He released his debut album No Said Date in 2004 to positive reviews, and has since released two additional albums.")
         ]
     }
+}
+
+
+extension CreateOutingViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        print("Place Coordinates: ", place.coordinate)
+        
+        // This is where I set the user's home base coordinates in user defaults
+        //NSUserDefaults.standardUserDefaults().setObject(place.coordinate.latitude, forKey: "HomeBaseLat")
+        //NSUserDefaults.standardUserDefaults().setObject(place.coordinate.longitude, forKey: "HomeBaseLon")
+        
+        let coords = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        
+        // Set Coordinate, and individual Lat and Long of the new Outing
+        
+        //newOuting.destinationLat = Double(place.coordinate.latitude)
+        //newOuting.destinationLon = Double(place.coordinate.longitude)
+        
+        newOuting.destinationLat = NSNumber(double: place.coordinate.latitude)
+        newOuting.destinationLon = NSNumber(double: place.coordinate.longitude)
+        
+        print("NEW OUTING DESTINATION LAT: ", newOuting.destinationLat, " AND LON: ", newOuting.destinationLon)
+        
+        // Did finish setting outing destination, make Bool = true
+        didSetDestination = true
+        
+        // TODO: Draw marker at and center around these coordinates on the map. I will call an update map pin function, and will need a homeBasePin GMSMarker property.
+        setHomeBaseMarker()
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
 }
