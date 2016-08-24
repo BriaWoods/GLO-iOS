@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FiraSans-Bold.otf</string>
+		<string>FontAwesome.tff</string>
+		<string>FiraSans-Book.otf</string>
+		<string>FiraSans-ExtraLight.otf</string>
+		<string>FiraSans-UltraLight.otf</string>
+		<string>FiraSans-Eight.otf</string>
+		<string>FiraSans-Hair.otf</string>
+		<string>FiraSans-Thin.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

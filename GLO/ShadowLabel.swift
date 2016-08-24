@@ -28,7 +28,7 @@ class ShadowLabel: UILabel {
  
     override func drawTextInRect(rect: CGRect) {
         
-        let shadowOffset = CGSizeMake(0.0, -3.0)
+        let shadowOffset = CGSizeMake(0.0, -1.5)
         let shadowRadius:CGFloat = 3.5
         let context = UIGraphicsGetCurrentContext()
         

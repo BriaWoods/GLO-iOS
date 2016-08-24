@@ -33,7 +33,6 @@ class LoginController: UIViewController {
         print("viewDidLoad")
         
     }
-    
 
     override func viewWillAppear(animated: Bool) {
         print("Login View Will Appear")

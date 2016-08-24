@@ -14,7 +14,7 @@ import Alamofire
 import Parse
 
 
-class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFieldDelegate {
+class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFieldDelegate, GMSAutocompleteViewControllerDelegate {
     
     let members = WuTang.all()
     
@@ -35,7 +35,6 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     
     @IBOutlet weak var createOutingLabel: ShadowLabel!
     @IBOutlet weak var addMemberLabel: ShadowLabel!
-    @IBOutlet weak var destinationLabel: ShadowLabel!
     @IBOutlet weak var curfewLabel: ShadowLabel!
     
     var titleLabelArray:[UILabel] = []
@@ -66,7 +65,7 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
         super.viewDidLoad()
         print("viewDidLoad")
         
-        titleLabelArray = [createOutingLabel, addMemberLabel, destinationLabel, curfewLabel]
+        titleLabelArray = [createOutingLabel, addMemberLabel, curfewLabel]
         
         addMemberButton.layer.cornerRadius = 15.0
         createOutingButton.layer.cornerRadius = 8.0
@@ -137,24 +136,28 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
         
         homeBaseMarker?.map = nil
         
-        let homeBaseLat = Double(newOuting.destinationLat)
-        let homeBaseLon = Double(newOuting.destinationLon)
+        let homeBaseLat = newOuting.destinationLat
+        let homeBaseLon = newOuting.destinationLon
         
-        homeBaseMarker = GMSMarker.init(position: CLLocationCoordinate2D(latitude: homeBaseLat, longitude: homeBaseLon))
+        let coordinate = CLLocationCoordinate2DMake(homeBaseLat, homeBaseLon)
+        
+        // init the marker at the home base and set it to the current map view
+        homeBaseMarker = GMSMarker.init(position: coordinate)
+        
         homeBaseMarker?.map = mapView
         
-        
-        // Center the Map View around the newly drawn marker
-        let camera = GMSCameraPosition.cameraWithLatitude(homeBaseLat, longitude: homeBaseLon, zoom: 3.0)
-        mapView.camera = camera
-        mapView.myLocationEnabled = true
+        // Center the Map View around the home base with animation
+        let update = GMSCameraUpdate.setTarget(coordinate, zoom: 15.0)
+        mapView.animateWithCameraUpdate(update)
         
     }
     
     @IBAction func tappedUpdateHomeBase(sender: AnyObject) {
         print("called tappedSetHomeBase")
         
-        let autocompleteController = GMSAutocompleteViewController()
+        let autocompleteController = GMSAutocompleteViewController() //OutingDestinationAutoComplete()
+        
+        //autocompleteController.outing = newOuting
         autocompleteController.delegate = self
         self.presentViewController(autocompleteController, animated: true, completion: nil)
     }
@@ -192,6 +195,8 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
             newOuting.outingCreator = NSUserDefaults.standardUserDefaults().objectForKey("userID") as! String
             newOuting.curfew = curfewDate
             newOuting.curfewTimeInterval = curfewTimeInterval
+            newOuting.destinationLat = NSUserDefaults.standardUserDefaults().doubleForKey("newOutingLatitude")
+            newOuting.destinationLon = NSUserDefaults.standardUserDefaults().doubleForKey("newOutingLongitude")
             
             // Initialize a new OutingViewController and set its outing property
             let newOVC = OutingViewController.init()
@@ -202,7 +207,8 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
             // Add the newOVC to the hpvc's outingViewArray and currentOutingArray
             hpvc!.currentOutingArray.append(newOuting)
             hpvc!.outingViewArray.append(newOVC)
-            
+            // Set up the hpvc's progress bar scroll view programmatically so that the timer doesn't try update a progress bar before it's drawn
+            hpvc!.setupList()
             
             postOuting(outingNameTextField.text!,
                        outingID: newOuting.outingID,
@@ -358,6 +364,64 @@ class CreateOutingViewController:UIViewController,UIScrollViewDelegate, UITextFi
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
+    
+    
+    // MARK: Location Picker Protocol
+    
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        print("Place Coordinates: ", place.coordinate)
+        
+        
+        let coords = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        
+        
+        
+        newOuting.destinationLat = place.coordinate.latitude
+        newOuting.destinationLon = place.coordinate.longitude
+        
+        //save coordinates to user defaults since they are not passing back properly
+        NSUserDefaults.standardUserDefaults().setDouble(place.coordinate.latitude, forKey: "newOutingLatitude")
+        NSUserDefaults.standardUserDefaults().setDouble(place.coordinate.longitude, forKey: "newOutingLongitude")
+        
+        
+        
+        print("NEW OUTING DESTINATION LAT: ", newOuting.destinationLat, " AND LON: ", newOuting.destinationLon)
+        
+        // Did finish setting outing destination, make Bool = true
+        didSetDestination = true
+        
+        
+        
+        self.dismissViewControllerAnimated(true, completion: {
+            self.setHomeBaseMarker()
+        })
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+    
+    
 }
 
 
@@ -392,7 +456,11 @@ struct WuTang {
     }
 }
 
+class OutingDestinationAutoComplete:GMSAutocompleteViewController {
+    var outing:OutingObject?
+}
 
+/*
 extension CreateOutingViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
@@ -413,8 +481,8 @@ extension CreateOutingViewController: GMSAutocompleteViewControllerDelegate {
         //newOuting.destinationLat = Double(place.coordinate.latitude)
         //newOuting.destinationLon = Double(place.coordinate.longitude)
         
-        newOuting.destinationLat = NSNumber(double: place.coordinate.latitude)
-        newOuting.destinationLon = NSNumber(double: place.coordinate.longitude)
+        newOuting.destinationLat = place.coordinate.latitude
+        newOuting.destinationLon = place.coordinate.longitude
         
         print("NEW OUTING DESTINATION LAT: ", newOuting.destinationLat, " AND LON: ", newOuting.destinationLon)
         
@@ -447,3 +515,4 @@ extension CreateOutingViewController: GMSAutocompleteViewControllerDelegate {
     }
     
 }
+*/

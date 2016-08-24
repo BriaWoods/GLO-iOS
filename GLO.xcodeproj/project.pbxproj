@@ -33,6 +33,13 @@
 		E204E8F81D5D2C00006CF631 /* ShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */; };
 		E204E90D1D5EEE36006CF631 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204E90C1D5EEE35006CF631 /* ProfileViewController.swift */; };
 		E204E90F1D5EEE9E006CF631 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E204E90E1D5EEE9E006CF631 /* ProfileView.xib */; };
+		E2069A8B1D6CFCD30050D4F7 /* FiraSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A8A1D6CF0CA0050D4F7 /* FiraSans-Bold.otf */; };
+		E2069A8C1D6CFCDD0050D4F7 /* FiraSans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A891D6CF0C50050D4F7 /* FiraSans-Book.otf */; };
+		E2069A8D1D6CFCE00050D4F7 /* FiraSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A881D6CEDAB0050D4F7 /* FiraSans-ExtraLight.otf */; };
+		E2069A8E1D6CFCE20050D4F7 /* FiraSans-Eight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A871D6CED930050D4F7 /* FiraSans-Eight.otf */; };
+		E2069A8F1D6CFCE40050D4F7 /* FiraSans-Hair.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A861D6CED7D0050D4F7 /* FiraSans-Hair.otf */; };
+		E2069A901D6CFCE70050D4F7 /* FiraSans-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A851D6CED700050D4F7 /* FiraSans-UltraLight.otf */; };
+		E2069A911D6CFCE90050D4F7 /* FiraSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2069A841D6CED5E0050D4F7 /* FiraSans-Thin.otf */; };
 		E213CB481D318C8600BFCF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213CB471D318C8600BFCF3E /* AppDelegate.swift */; };
 		E213CB4F1D318C8700BFCF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E213CB4E1D318C8700BFCF3E /* Assets.xcassets */; };
 		E213CB521D318C8700BFCF3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213CB501D318C8700BFCF3E /* LaunchScreen.storyboard */; };
@@ -103,6 +110,13 @@
 		E204E8F71D5D2C00006CF631 /* ShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowLabel.swift; sourceTree = "<group>"; };
 		E204E90C1D5EEE35006CF631 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E204E90E1D5EEE9E006CF631 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		E2069A841D6CED5E0050D4F7 /* FiraSans-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Thin.otf"; sourceTree = "<group>"; };
+		E2069A851D6CED700050D4F7 /* FiraSans-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-UltraLight.otf"; sourceTree = "<group>"; };
+		E2069A861D6CED7D0050D4F7 /* FiraSans-Hair.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Hair.otf"; sourceTree = "<group>"; };
+		E2069A871D6CED930050D4F7 /* FiraSans-Eight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Eight.otf"; sourceTree = "<group>"; };
+		E2069A881D6CEDAB0050D4F7 /* FiraSans-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-ExtraLight.otf"; sourceTree = "<group>"; };
+		E2069A891D6CF0C50050D4F7 /* FiraSans-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Book.otf"; sourceTree = "<group>"; };
+		E2069A8A1D6CF0CA0050D4F7 /* FiraSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Bold.otf"; sourceTree = "<group>"; };
 		E213CB441D318C8600BFCF3E /* GLO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213CB471D318C8600BFCF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213CB4E1D318C8700BFCF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,6 +211,20 @@
 			name = SideMenu;
 			sourceTree = "<group>";
 		};
+		E2069A831D6CED3F0050D4F7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E2069A8A1D6CF0CA0050D4F7 /* FiraSans-Bold.otf */,
+				E2069A891D6CF0C50050D4F7 /* FiraSans-Book.otf */,
+				E2069A881D6CEDAB0050D4F7 /* FiraSans-ExtraLight.otf */,
+				E2069A871D6CED930050D4F7 /* FiraSans-Eight.otf */,
+				E2069A861D6CED7D0050D4F7 /* FiraSans-Hair.otf */,
+				E2069A851D6CED700050D4F7 /* FiraSans-UltraLight.otf */,
+				E2069A841D6CED5E0050D4F7 /* FiraSans-Thin.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		E213CB3B1D318C8400BFCF3E = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +290,7 @@
 				E204E8DA1D541F7E006CF631 /* PhoneLogin.storyboard */,
 				E22B5E1C1D6172FD006B264F /* DeetsEntryStoryboard.storyboard */,
 				E213CB531D318C8700BFCF3E /* Info.plist */,
+				E2069A831D6CED3F0050D4F7 /* Fonts */,
 			);
 			path = GLO;
 			sourceTree = "<group>";
@@ -396,12 +425,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2069A8D1D6CFCE00050D4F7 /* FiraSans-ExtraLight.otf in Resources */,
 				6D1B793A1D31BC7F00485280 /* PosseTableViewCell.xib in Resources */,
+				E2069A911D6CFCE90050D4F7 /* FiraSans-Thin.otf in Resources */,
+				E2069A8F1D6CFCE40050D4F7 /* FiraSans-Hair.otf in Resources */,
 				6DF37A5E1D322A29001CB513 /* ContactsTableViewCell.xib in Resources */,
 				E204E90F1D5EEE9E006CF631 /* ProfileView.xib in Resources */,
+				E2069A8C1D6CFCDD0050D4F7 /* FiraSans-Book.otf in Resources */,
+				E2069A901D6CFCE70050D4F7 /* FiraSans-UltraLight.otf in Resources */,
 				6DF37A561D3200FC001CB513 /* ContactsViewController.xib in Resources */,
+				E2069A8E1D6CFCE20050D4F7 /* FiraSans-Eight.otf in Resources */,
 				E213CB521D318C8700BFCF3E /* LaunchScreen.storyboard in Resources */,
 				E22B5E1D1D6172FD006B264F /* DeetsEntryStoryboard.storyboard in Resources */,
+				E2069A8B1D6CFCD30050D4F7 /* FiraSans-Bold.otf in Resources */,
 				E213CB761D31952E00BFCF3E /* HomePageView.xib in Resources */,
 				E204E8F41D5CFDD8006CF631 /* ContactTableViewCell.xib in Resources */,
 				E213CBCC1D322FF400BFCF3E /* CreateOutingView.xib in Resources */,

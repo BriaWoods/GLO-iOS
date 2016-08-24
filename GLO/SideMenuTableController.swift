@@ -11,7 +11,7 @@ import Parse
 
 class SideMenuTableController: UITableViewController {
 
-    var menuOptions = ["Profile", "Settings", "Friend Requests", "Logout"]
+    var menuOptions = ["profile", "settings", "invite contacts", "friend requests", "logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class SideMenuTableController: UITableViewController {
         
         cell!.textLabel!.text = menuOptions[indexPath.row]
         cell!.textLabel!.textColor = UIColor.whiteColor()
+        cell?.textLabel?.font = UIFont.init(name: "FiraSans-Book", size: 16.0)
         
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         cell!.backgroundColor = UIColor.clearColor()
@@ -64,13 +65,14 @@ class SideMenuTableController: UITableViewController {
         // TODO: Add in a friend Request view so that users can accept/deny friend requests; this will be processed on the backend by a cloud function that will create a relation between the current Parse user and the selected user.
         
         print("Tapped ", menuOptions[indexPath.row])
+        
         if (indexPath.row == 0) {
             let pvc = ProfileViewController()
             self.navigationController?.pushViewController(pvc, animated: true)
         } else if (indexPath.row == 2) {
             let ctvc = ContactTableViewController()
             self.navigationController?.pushViewController(ctvc, animated: true)
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 4) {
             print("Proceeding to log out the user")
             // Logout current User then present the login storyboard.
             PFUser.logOut()

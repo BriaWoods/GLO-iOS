@@ -26,12 +26,9 @@ class OutingViewController:UIViewController {
     
     // Member Array which will hold their location, name, an image for the outing and their marker, and their current status (safe, uncomfortable, or emergency)
     var memberDict:[String:Member] = [:]
-    
-   
    
     @IBOutlet weak var outingNameLabel: UILabel!
     @IBOutlet weak var curfewTimerLabel: UILabel!
-    
     
     ////// Testing out Socket.io
     let socket = SocketIOClient(socketURL: NSURL(string: "https://glo-app.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
@@ -42,8 +39,6 @@ class OutingViewController:UIViewController {
     @IBOutlet weak var homeSafeButton: UIButton!
     @IBOutlet weak var uncomfortableButton: UIButton!
     @IBOutlet weak var emergencyButton: UIButton!
-    
-    
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -62,7 +57,6 @@ class OutingViewController:UIViewController {
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
         print("close button pressed in OVC")
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -73,7 +67,7 @@ class OutingViewController:UIViewController {
         addHandlers()
         socket.connect()
         
-        mapView.layer.cornerRadius = 25.0
+        mapView.layer.cornerRadius = mapView.frame.width / 2
         
         // Add a google Map View
         // Create a GMSCameraPosition that tells the map to display the
@@ -103,7 +97,7 @@ class OutingViewController:UIViewController {
         
         print("CURRENT OUTING LAT: ", lat, " AND LNG: ", lon)
         
-        let camera = GMSCameraPosition.cameraWithLatitude(Double(lat!), longitude: Double(lon!), zoom: 3.0)
+        let camera = GMSCameraPosition.cameraWithLatitude(lat!, longitude: lon!, zoom: 12.0)
         self.mapView.camera = camera
         //mapView = GMSMapView.mapWithFrame(CGRect.zero, camera: camera)
         mapView.myLocationEnabled = true

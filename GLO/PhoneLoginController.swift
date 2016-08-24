@@ -10,6 +10,14 @@ import UIKit
 import Parse
 import Alamofire
 
+class LoginInitialViewController: UIViewController {
+    var dismissBlock:(() -> Void) = {}
+    
+    override func viewDidDisappear(animated: Bool) {
+        dismissBlock()
+    }
+}
+
 class PhoneLoginController: UIViewController {
 
     var rawPhoneString = ""
@@ -17,29 +25,30 @@ class PhoneLoginController: UIViewController {
     
     var codeEntryString = ""
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
-    @IBOutlet weak var passcode1: UILabel!
-    @IBOutlet weak var passcode2: UILabel!
-    @IBOutlet weak var passcode3: UILabel!
-    @IBOutlet weak var passcode4: UILabel!
+    @IBOutlet weak var titleLabel:     UILabel!
+    @IBOutlet weak var passcode1:      UILabel!
+    @IBOutlet weak var passcode2:      UILabel!
+    @IBOutlet weak var passcode3:      UILabel!
+    @IBOutlet weak var passcode4:      UILabel!
     
     @IBOutlet weak var sendCodeButton: UIButton!
     
-    @IBOutlet weak var key1: UIButton!
-    @IBOutlet weak var key2: UIButton!
-    @IBOutlet weak var key3: UIButton!
-    @IBOutlet weak var key4: UIButton!
-    @IBOutlet weak var key5: UIButton!
-    @IBOutlet weak var key6: UIButton!
-    @IBOutlet weak var key7: UIButton!
-    @IBOutlet weak var key8: UIButton!
-    @IBOutlet weak var key9: UIButton!
-    @IBOutlet weak var key0: UIButton!
+    @IBOutlet weak var key1:           UIButton!
+    @IBOutlet weak var key2:           UIButton!
+    @IBOutlet weak var key3:           UIButton!
+    @IBOutlet weak var key4:           UIButton!
+    @IBOutlet weak var key5:           UIButton!
+    @IBOutlet weak var key6:           UIButton!
+    @IBOutlet weak var key7:           UIButton!
+    @IBOutlet weak var key8:           UIButton!
+    @IBOutlet weak var key9:           UIButton!
+    @IBOutlet weak var key0:           UIButton!
+    
+    
     
     var keypadArray:[UIButton] = []
-    
     var inCodeEntryPhase = false
     
     override func viewDidLoad() {

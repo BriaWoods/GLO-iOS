@@ -20,6 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        print("********** FONTS *************")
+        
+        
+        for family: String in UIFont.familyNames()
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNamesForFamilyName(family)
+            {
+                print("== \(names)")
+            }
+        
+        }
+        
+        print("******************************")
+        
         print("app did finish launching with options")
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         
@@ -85,21 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.makeKeyAndVisible()
         
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            
-            print("Houston we have a user")
-            
-        } else {
-            
-            print("present the login!")
-            //let storyboard = UIStoryboard.init(name: "LoginStoryboard", bundle: nil)
-            let storyboard = UIStoryboard.init(name: "PhoneLogin", bundle: nil)
-            self.window?.rootViewController?.presentViewController(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
-            
-        }
-        
-        
+        // Check if there is a user logged in, and if the user has entered their deets
+        checkForLogin()
+        checkForDeets()
         
         return true
     }
@@ -129,7 +132,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func checkForLogin() {
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            
+            print("Houston we have a user")
+            
+        } else {
+            
+            print("present the login!")
+            //let storyboard = UIStoryboard.init(name: "LoginStoryboard", bundle: nil)
+            let storyboard = UIStoryboard.init(name: "PhoneLogin", bundle: nil)
+            let livc = storyboard.instantiateInitialViewController() as! LoginInitialViewController
+            // Set the plvc dismiss block to call check deets method.
+            
+            livc.dismissBlock = {
+                print("in plvc dismissBlock, proceeding to call checkForDeets")
+                self.checkForDeets()
+            }
+            
+            self.window?.rootViewController?.presentViewController(livc, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func checkForDeets() {
+        // Pushes the Detail Entry View if the user hasn't filled in their information yet (i.e. Set their home base, entered a name,  a short description, and taken a profile pic.
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        
+        if (!userDefaults.boolForKey("HasLaunchedOnce")      ||
+            userDefaults.stringForKey("Name") == nil         ||
+            userDefaults.stringForKey("Description") == nil  ||
+            userDefaults.objectForKey("ProfilePic") == nil   ||
+            userDefaults.objectForKey("HomeBaseLat") == nil  ||
+            userDefaults.objectForKey("HomeBaseLon") == nil
+            ) {
+            
+            // Launch the deets entry page
+            let edvc = EnterDeetsViewController()
+            
+            self.window?.rootViewController?.presentViewController(edvc, animated: true, completion: nil)
+            
+        }
+        
+    }
 
 }
 

@@ -318,7 +318,58 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
     
     // MARK: Message Compose Delegate
     
-    func inviteButtonPressed(sender:AnyObject) {
+    func sendFriendRequest(sender:AnyObject?) {
+        
+        // Create a Parse object called "FriendRequest" and attach all the neccessary data
+        let button = sender as! UIButton
+        let point = tableView.convertPoint(CGPointZero, fromView: button)
+        
+        guard let indexPath = tableView.indexPathForRowAtPoint(point) else {
+            fatalError("can't find point in tableView")
+        }
+        
+        let contact: Contact
+        
+        if searchController.active && searchController.searchBar.text != "" {
+            contact = filteredContacts[indexPath.row]
+        } else {
+            contact = contactsArray[indexPath.row]
+        }
+        
+        print("Friend request receiverID = ", contact.phoneNumber)
+        
+        let senderID = NSUserDefaults.standardUserDefaults().objectForKey("userID") as! String
+        let senderName = NSUserDefaults.standardUserDefaults().objectForKey("Name")
+        let receiverID = contact.phoneNumber as! String
+        let receiverName = contact.fullName as! String
+        
+        // Build the friend Request Object
+        var friendRequest = PFObject(className: "FriendRequest")
+        friendRequest["senderID"] = senderID
+        friendRequest["senderName"] = senderName
+        friendRequest["receiverID"] = receiverID
+        friendRequest["receiverName"] = receiverName
+        friendRequest["status"] = "pending"
+        
+        var requestACL = PFACL.init()
+        requestACL.setWriteAccess(true, forUserId: senderID)
+        requestACL.setReadAccess(true, forUserId: receiverID)
+        friendRequest.ACL = requestACL
+        
+        friendRequest.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                // The object has been saved.
+                print("Friend Request sent successfully!")
+            } else {
+                // There was a problem, check error.description
+                print("Error creating and sending the friend request! ", error?.description)
+            }
+        }
+    }
+    
+    
+    func sendSMSInvitePressed(sender:AnyObject) {
         
         // TODO: Based on whether a user exists for this phone number yet, the app will either send an SMS or sent a friend request? Otherwise they can be different methods that get registered when I cycle through to see if the users exist in the database.
         print("inviteButtonPressed")
@@ -378,10 +429,6 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
         self.presentViewController(messageController, animated: true, completion: nil)
         
     }
-    
-    
-    
-    
     
     
     

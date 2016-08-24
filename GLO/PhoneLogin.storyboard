@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login Initial View Controller-->
         <scene sceneID="lFe-Rh-76t">
             <objects>
-                <viewController id="lUB-aS-zdZ" sceneMemberID="viewController">
+                <viewController id="lUB-aS-zdZ" customClass="LoginInitialViewController" customModule="GLO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wlc-8x-nNw"/>
                         <viewControllerLayoutGuide type="bottom" id="J5R-fk-PbH"/>

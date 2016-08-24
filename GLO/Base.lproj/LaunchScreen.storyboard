@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FiraSans-ExtraLight.otf">
+            <string>FiraSans-ExtraLight</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -17,23 +22,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glo logo" translatesAutoresizingMaskIntoConstraints="NO" id="W2z-5h-Dbe">
-                                <rect key="frame" x="140" y="140" width="320" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="Ybj-nM-Ms2"/>
-                                    <constraint firstAttribute="width" constant="320" id="eUt-xM-pqd"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright Good Looking Out, LLC, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-lu-7Lf">
                                 <rect key="frame" x="148" y="565" width="305" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="305" id="0tf-4P-mlY"/>
                                     <constraint firstAttribute="height" constant="27" id="of0-Za-07d"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="FiraSans-ExtraLight" family="Fira Sans" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="glo logo" translatesAutoresizingMaskIntoConstraints="NO" id="W2z-5h-Dbe">
+                                <rect key="frame" x="135" y="148" width="330" height="304"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="304" id="Ybj-nM-Ms2"/>
+                                    <constraint firstAttribute="width" constant="330" id="eUt-xM-pqd"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -50,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="glo logo" width="500" height="500"/>
+        <image name="glo logo" width="675" height="598"/>
     </resources>
 </document>

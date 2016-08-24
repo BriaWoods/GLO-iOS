@@ -4,6 +4,23 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FiraSans-Book.otf">
+            <string>FiraSans-Book</string>
+            <string>FiraSans-Book</string>
+            <string>FiraSans-Book</string>
+        </mutableArray>
+        <mutableArray key="FiraSans-ExtraLight.otf">
+            <string>FiraSans-ExtraLight</string>
+        </mutableArray>
+        <mutableArray key="FiraSans-Thin.otf">
+            <string>FiraSans-Thin</string>
+        </mutableArray>
+        <mutableArray key="FiraSans-UltraLight.otf">
+            <string>FiraSans-UltraLight</string>
+            <string>FiraSans-UltraLight</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateOutingViewController" customModule="GLO" customModuleProvider="target">
             <connections>
@@ -13,7 +30,6 @@
                 <outlet property="createOutingLabel" destination="vDm-Ub-OG1" id="83k-mY-Wst"/>
                 <outlet property="curfewLabel" destination="zGw-2p-BsE" id="zHC-dD-wnr"/>
                 <outlet property="curfewTimePicker" destination="hi0-e0-ZzV" id="u9W-mZ-gh9"/>
-                <outlet property="destinationLabel" destination="wOP-um-to1" id="o28-IW-kzo"/>
                 <outlet property="mapView" destination="9C2-bh-LzC" id="dGA-vS-ZP3"/>
                 <outlet property="memberScrollView" destination="C60-2m-5bv" id="HLD-JH-eq2"/>
                 <outlet property="outingNameTextField" destination="vat-cV-5nJ" id="5JZ-s6-Ccz"/>
@@ -31,7 +47,7 @@
                         <constraint firstAttribute="height" constant="34" id="AWd-E6-zPj"/>
                         <constraint firstAttribute="width" constant="238" id="iqy-Ze-Wde"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                    <fontDescription key="fontDescription" name="FiraSans-ExtraLight" family="Fira Sans" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -42,41 +58,31 @@
                         <constraint firstAttribute="height" constant="34" id="CwW-V2-WW0"/>
                         <constraint firstAttribute="width" constant="238" id="bZH-HA-IY7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="21"/>
+                    <fontDescription key="fontDescription" name="FiraSans-UltraLight" family="Fira Sans" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOT-nv-sRt">
-                    <rect key="frame" x="250" y="102" width="36" height="34"/>
+                    <rect key="frame" x="254" y="104" width="36" height="34"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="36" id="mbJ-Zm-u8F"/>
                         <constraint firstAttribute="height" constant="34" id="yNa-Un-OZx"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="31"/>
+                    <fontDescription key="fontDescription" name="FiraSans-Thin" family="Fira Sans" pointSize="46"/>
                     <state key="normal" title="+">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C60-2m-5bv" userLabel="MemberScroll">
-                    <rect key="frame" x="0.0" y="136" width="375" height="80"/>
+                    <rect key="frame" x="0.0" y="141" width="375" height="94"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="48G-2b-wL2"/>
-                        <constraint firstAttribute="height" constant="80" id="Yq0-Jq-8fr"/>
+                        <constraint firstAttribute="height" constant="94" id="Yq0-Jq-8fr"/>
                     </constraints>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOP-um-to1" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
-                    <rect key="frame" x="68" y="217" width="238" height="34"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="238" id="FdH-GC-paM"/>
-                        <constraint firstAttribute="height" constant="34" id="ltr-IF-iiV"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="21"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hi0-e0-ZzV">
-                    <rect key="frame" x="0.0" y="525" width="375" height="93"/>
+                    <rect key="frame" x="0.0" y="515" width="375" height="93"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="93" id="Tjv-Qz-h3u"/>
                         <constraint firstAttribute="width" constant="375" id="cC0-Ju-gS4"/>
@@ -86,12 +92,12 @@
                     </date>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curfew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-2p-BsE" customClass="ShadowLabel" customModule="GLO" customModuleProvider="target">
-                    <rect key="frame" x="68" y="493" width="238" height="34"/>
+                    <rect key="frame" x="68" y="480" width="238" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="238" id="d4i-c6-L9n"/>
                         <constraint firstAttribute="height" constant="34" id="tpK-tA-dKj"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="21"/>
+                    <fontDescription key="fontDescription" name="FiraSans-UltraLight" family="Fira Sans" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -102,7 +108,7 @@
                         <constraint firstAttribute="width" constant="131" id="HAX-pE-Ma6"/>
                         <constraint firstAttribute="height" constant="30" id="ypI-rh-rkU"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
+                    <fontDescription key="fontDescription" name="FiraSans-Book" family="Fira Sans" pointSize="19"/>
                     <state key="normal" title="Create Outing">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -115,11 +121,11 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="238" id="8Mc-i2-yk8"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="FiraSans-Book" family="Fira Sans" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C2-bh-LzC" customClass="GMSMapView">
-                    <rect key="frame" x="23" y="296" width="329" height="189"/>
+                    <rect key="frame" x="23" y="286" width="329" height="189"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="189" id="Okl-gg-2xa"/>
@@ -127,11 +133,12 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lld-JS-Rp8">
-                    <rect key="frame" x="122" y="258" width="130" height="30"/>
+                    <rect key="frame" x="122" y="248" width="130" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="l42-6V-V36"/>
                         <constraint firstAttribute="width" constant="130" id="rsn-MJ-MrN"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="FiraSans-Book" family="Fira Sans" pointSize="16"/>
                     <state key="normal" title="Set Destination">
                         <color key="titleColor" red="1" green="0.9530383469" blue="0.95282105319999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -144,24 +151,22 @@
             <constraints>
                 <constraint firstItem="auC-7p-X0a" firstAttribute="top" secondItem="vat-cV-5nJ" secondAttribute="bottom" constant="11" id="0VN-cz-ITA"/>
                 <constraint firstItem="auC-7p-X0a" firstAttribute="centerX" secondItem="vat-cV-5nJ" secondAttribute="centerX" id="1TD-6F-SXz"/>
+                <constraint firstItem="Lld-JS-Rp8" firstAttribute="centerX" secondItem="C60-2m-5bv" secondAttribute="centerX" id="206-bb-rhb"/>
                 <constraint firstItem="9C2-bh-LzC" firstAttribute="centerX" secondItem="Lld-JS-Rp8" secondAttribute="centerX" id="2wi-Vl-xCQ"/>
                 <constraint firstItem="vat-cV-5nJ" firstAttribute="top" secondItem="vDm-Ub-OG1" secondAttribute="bottom" constant="6" id="98f-fZ-amp"/>
                 <constraint firstItem="vat-cV-5nJ" firstAttribute="centerX" secondItem="vDm-Ub-OG1" secondAttribute="centerX" id="9wE-Ew-EXG"/>
-                <constraint firstItem="VOT-nv-sRt" firstAttribute="leading" secondItem="auC-7p-X0a" secondAttribute="trailing" constant="-56" id="Bt3-5c-Mlr"/>
-                <constraint firstItem="E8c-R5-nHg" firstAttribute="top" secondItem="hi0-e0-ZzV" secondAttribute="bottom" constant="9" id="Dgy-EO-Kjm"/>
+                <constraint firstItem="VOT-nv-sRt" firstAttribute="leading" secondItem="auC-7p-X0a" secondAttribute="trailing" constant="-52" id="Bt3-5c-Mlr"/>
+                <constraint firstItem="E8c-R5-nHg" firstAttribute="top" secondItem="hi0-e0-ZzV" secondAttribute="bottom" constant="19" id="Dgy-EO-Kjm"/>
                 <constraint firstItem="E8c-R5-nHg" firstAttribute="centerX" secondItem="hi0-e0-ZzV" secondAttribute="centerX" id="Fjz-Xs-AbW"/>
-                <constraint firstItem="hi0-e0-ZzV" firstAttribute="top" secondItem="zGw-2p-BsE" secondAttribute="bottom" constant="-2" id="HGP-10-jD0"/>
-                <constraint firstItem="Lld-JS-Rp8" firstAttribute="centerX" secondItem="wOP-um-to1" secondAttribute="centerX" id="Mop-2S-Xpb"/>
-                <constraint firstItem="wOP-um-to1" firstAttribute="top" secondItem="C60-2m-5bv" secondAttribute="bottom" constant="1" id="RAZ-p8-B04"/>
+                <constraint firstItem="hi0-e0-ZzV" firstAttribute="top" secondItem="zGw-2p-BsE" secondAttribute="bottom" constant="1" id="HGP-10-jD0"/>
                 <constraint firstItem="vDm-Ub-OG1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="23" id="ZmA-KB-DJO"/>
-                <constraint firstItem="zGw-2p-BsE" firstAttribute="top" secondItem="9C2-bh-LzC" secondAttribute="bottom" constant="8" id="apA-GU-8Ll"/>
+                <constraint firstItem="zGw-2p-BsE" firstAttribute="top" secondItem="9C2-bh-LzC" secondAttribute="bottom" constant="5" id="apA-GU-8Ll"/>
                 <constraint firstItem="9C2-bh-LzC" firstAttribute="top" secondItem="Lld-JS-Rp8" secondAttribute="bottom" constant="8" id="bfP-Hq-USU"/>
-                <constraint firstItem="VOT-nv-sRt" firstAttribute="centerY" secondItem="auC-7p-X0a" secondAttribute="centerY" constant="-2" id="cAH-IQ-9aS"/>
+                <constraint firstItem="VOT-nv-sRt" firstAttribute="centerY" secondItem="auC-7p-X0a" secondAttribute="centerY" id="cAH-IQ-9aS"/>
                 <constraint firstItem="zGw-2p-BsE" firstAttribute="centerX" secondItem="9C2-bh-LzC" secondAttribute="centerX" id="g4r-8S-8i4"/>
                 <constraint firstItem="vDm-Ub-OG1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mMr-fS-inM"/>
-                <constraint firstItem="wOP-um-to1" firstAttribute="centerX" secondItem="C60-2m-5bv" secondAttribute="centerX" id="pNV-cD-I6E"/>
-                <constraint firstItem="C60-2m-5bv" firstAttribute="top" secondItem="auC-7p-X0a" secondAttribute="bottom" constant="-2" id="rcs-Us-xVc"/>
-                <constraint firstItem="Lld-JS-Rp8" firstAttribute="top" secondItem="wOP-um-to1" secondAttribute="bottom" constant="7" id="wuV-BK-edf"/>
+                <constraint firstItem="C60-2m-5bv" firstAttribute="top" secondItem="auC-7p-X0a" secondAttribute="bottom" constant="3" id="rcs-Us-xVc"/>
+                <constraint firstItem="Lld-JS-Rp8" firstAttribute="top" secondItem="C60-2m-5bv" secondAttribute="bottom" constant="13" id="uR1-Dg-lHo"/>
                 <constraint firstItem="C60-2m-5bv" firstAttribute="centerX" secondItem="auC-7p-X0a" secondAttribute="centerX" id="xt0-dB-H0G"/>
                 <constraint firstItem="hi0-e0-ZzV" firstAttribute="centerX" secondItem="zGw-2p-BsE" secondAttribute="centerX" id="yKm-4J-Huf"/>
             </constraints>

@@ -19,8 +19,8 @@ class OutingObject: NSManagedObject {
     @NSManaged var curfewTimeInterval: NSTimeInterval
     @NSManaged var outingCreator:      String
     
-    @NSManaged var destinationLat:     NSNumber
-    @NSManaged var destinationLon:     NSNumber
+    @NSManaged var destinationLat:     Double
+    @NSManaged var destinationLon:     Double
     
     // memberArray will not be necessary, because the real (updated) one I want is going to be on the server)
     //@NSManaged var memberArray:[String:Member] = [:]
