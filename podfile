@@ -11,6 +11,7 @@ target 'GLO' do
   pod 'Alamofire', '~> 3.4'
   pod 'GoogleMaps'
   pod 'GooglePlacesAPI' 
+  pod 'FontAwesome.swift'
 
   target 'GLOTests' do
     inherit! :search_paths
